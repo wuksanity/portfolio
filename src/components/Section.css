@@ -1,0 +1,29 @@
+.section {
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.section-content {
+  padding: 20px;
+  border-radius: 8px;
+  color: black;
+}
+
+.view-more {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
