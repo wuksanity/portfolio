@@ -7,7 +7,7 @@ function Header() {
     <header className="header">
       <nav className="nav">
         <ul className="nav-list">
-          <li>about Walker Riley</li>
+          <li>about walker riley</li>
           <li>software</li>
           <li>photography</li>
           <li>acting/modeling</li>

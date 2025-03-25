@@ -1,13 +1,13 @@
 import React from 'react';
 import './Section.css';
 
-function Section({ title, description, backgroundImage }) {
+function Section({ title, description, backgroundImage, showButton = true, className = '' }) {
   return (
     <section className="section" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="section-content">
+      <div className={`section-content ${className}`}>
         <h2>{title}</h2>
         <p>{description}</p>
-        <button className="view-more">View More</button>
+        {showButton && <button className="view-more">view more</button>}
       </div>
     </section>
   );
