@@ -1,16 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Section.css';
 
-function Section({ title, description, backgroundImage, showButton = true, className = '' }) {
+const Section = React.forwardRef(({ 
+  title, 
+  description, 
+  backgroundImage, 
+  showButton = true, 
+  className = '',
+  id // We'll add this new prop
+}, ref) => {
+  const linkPath = title.toLowerCase().replace(/\s+/g, '-'); // Convert title to path
+
   return (
-    <section className="section" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className={`section-content ${className}`}>
+    <section 
+      id={id}
+      ref={ref}
+      className={`section ${className}`}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="section-content">
         <h2>{title}</h2>
-        <p>{description}</p>
-        {showButton && <button className="view-more">view more</button>}
+        <div>{description}</div> {/* Changed from <p> to <div> to handle multiple paragraphs */}
+        {showButton && <Link to={`/${linkPath}`} className="view-more">view more</Link>}
       </div>
     </section>
   );
-}
+});
+
+Section.displayName = 'Section'; // For better debugging
 
 export default Section;

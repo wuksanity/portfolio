@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px; /* Set a fixed height for the header */
+  height: 60px;
 }
 
 .nav {
@@ -29,9 +29,52 @@
   padding: 0;
 }
 
+.nav-list li {
+  position: relative;
+}
+
+/* Unified base style for ALL interactive elements */
+.nav-list a,
+.nav-list button {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  background: none;
+  border: none;
+  padding: 8px 16px; /* Same as contact button */
+  margin: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Contact button special treatment */
+.contact-button {
+  border-radius: 4px;
+}
+
+/* Unified hover effects */
+.nav-list a:hover,
+.nav-list button:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+/* Contact button hover adds border color change */
+.contact-button:hover {
+  border-color: #ffcc00 !important;
+}
+
 .social-icons {
   display: flex;
   gap: 15px;
   align-items: center;
   margin-left: auto;
-} 
+}
+
+/* Social icons hover */
+.social-icons a:hover {
+  transform: scale(1.1);
+}
