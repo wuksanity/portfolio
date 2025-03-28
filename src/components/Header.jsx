@@ -1,17 +1,17 @@
 import React from 'react';
-import './Header.css'; // Create this CSS file for header-specific styles
+import './Header.css';
 import { FaInstagram, FaEnvelope, FaTiktok, FaGithub } from 'react-icons/fa';
 
-function Header() {
+function Header({ scrollToSection, sectionRefs }) {
   return (
     <header className="header">
       <nav className="nav">
         <ul className="nav-list">
-          <li>about walker riley</li>
-          <li>software</li>
-          <li>photography</li>
-          <li>acting/modeling</li>
-          <li>contact</li>
+          <li><button onClick={() => scrollToSection(sectionRefs.aboutRef)}>about walker riley</button></li>
+          <li><button onClick={() => scrollToSection(sectionRefs.softwareRef)}>software</button></li>
+          <li><button onClick={() => scrollToSection(sectionRefs.photographyRef)}>photography</button></li>
+          <li><button onClick={() => scrollToSection(sectionRefs.actingModelingRef)}>acting/modeling</button></li>
+          <li><button className="contact-button">contact</button></li>
         </ul>
         <div className="social-icons">
           <FaInstagram />
@@ -24,4 +24,4 @@ function Header() {
   );
 }
 
-export default Header; 
+export default Header;
