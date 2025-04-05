@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Section from './components/Section';
@@ -8,6 +8,7 @@ import ActingModeling from './views/ActingModeling';
 import './App.css';
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
 
   const aboutRef = useRef(null);
   const softwareRef = useRef(null);
@@ -19,10 +20,18 @@ function App() {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Toggle popup visibility
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   return (
     <>
-      <Header scrollToSection={scrollToSection}
-        sectionRefs={{ aboutRef, softwareRef, photographyRef, actingModelingRef }}/>
+      <Header 
+        scrollToSection={scrollToSection}
+        sectionRefs={{ aboutRef, softwareRef, photographyRef, actingModelingRef }}
+        onContactClick={togglePopup} // Pass the toggle function
+      />
       <main>
         <Routes>
           <Route path="/" element={
@@ -86,6 +95,12 @@ function App() {
           <Route path="/acting-modeling" element={<ActingModeling />} />
         </Routes>
       </main>
+      {showPopup && (
+        <div className="popup">
+          <p>It's in the corner! didn't you see it, silly?</p>
+          <button onClick={togglePopup}>ope</button>
+        </div>
+      )}
     </>
   );
 }
