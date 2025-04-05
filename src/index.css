@@ -20,4 +20,39 @@ body, html, #root {
   
 }
 
+.popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  color: #333;
+  max-width: 300px;
+  text-align: center;
+}
+
+.popup p {
+  margin: 0 0 15px;
+  font-size: 1em;
+}
+
+.popup button {
+  background-color: #000000;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.popup button:hover {
+  background-color: #2a2525;
+}
+
 
