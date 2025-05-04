@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Section from './components/Section';
 import Software from './views/Software';
@@ -8,6 +8,7 @@ import ActingModeling from './views/ActingModeling';
 import './App.css';
 
 function App() {
+  const location = useLocation();
   const [showPopup, setShowPopup] = useState(false);
 
   const aboutRef = useRef(null);
@@ -27,11 +28,14 @@ function App() {
 
   return (
     <>
-      <Header 
-        scrollToSection={scrollToSection}
-        sectionRefs={{ aboutRef, softwareRef, photographyRef, actingModelingRef }}
-        onContactClick={togglePopup} // Pass the toggle function
-      />
+      {/* Conditionally render the Header based on the current path */}
+      {location.pathname === '/' && (
+        <Header 
+          scrollToSection={scrollToSection}
+          sectionRefs={{ aboutRef, softwareRef, photographyRef, actingModelingRef }}
+          onContactClick={togglePopup} // Pass the toggle function
+        />
+      )}
       <main>
         <Routes>
           <Route path="/" element={
@@ -97,8 +101,8 @@ function App() {
       </main>
       {showPopup && (
         <div className="popup">
-          <p>It's in the corner! didn't you see it, silly?</p>
-          <button onClick={togglePopup}>ope</button>
+          <p>It's in the corner, didn't you see it, silly?</p>
+          <button onClick={togglePopup}>Close</button>
         </div>
       )}
     </>

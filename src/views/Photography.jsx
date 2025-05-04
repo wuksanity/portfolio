@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./Photography.css";
@@ -9,6 +9,10 @@ export default function PhotographyPortfolio() {
   const [activeSection, setActiveSection] = useState(null);
   const portraitGalleryRef = useRef(null);
   const streetGalleryRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, []);
 
   const portraitPhotos = [
     { id: 1, src: 'src/assets/borgar.jpg', alt: 'Portrait 1' },
@@ -114,7 +118,7 @@ export default function PhotographyPortfolio() {
           {/* Portrait Gallery Section */}
           <div className="gallery-section">
             <div className="gallery-header">
-              <h2 className="gallery-title">PORTRAITURE</h2>
+              <h2 className="gallery-title"> PORTRAITURE</h2>
               <button 
                 onClick={() => setActiveSection("portraiture")}
                 className="view-all-button"
@@ -184,7 +188,7 @@ export default function PhotographyPortfolio() {
           </div>
           
           {/* Street Gallery Section */}
-          <div className="gallery-section">
+          <div className="gallery-section street-gallery-container">
             <div className="gallery-header">
               <h2 className="gallery-title">STREET</h2>
               <button 
