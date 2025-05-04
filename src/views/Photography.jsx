@@ -43,6 +43,15 @@ export default function PhotographyPortfolio() {
 
   return (
     <main className="photography-portfolio">
+      <div className="back-to-main">
+        <button 
+          onClick={() => window.location.href = '/'}
+          className="back-to-main-button"
+        >
+          <ArrowLeft className="back-icon" />
+          take me home
+        </button>
+      </div>
       {activeSection === null ? (
         <motion.div 
           initial={{ opacity: 0 }}

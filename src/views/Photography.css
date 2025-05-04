@@ -443,3 +443,27 @@
 .street-gallery-container {
   margin-bottom: 1rem;
 }
+
+.back-to-main {
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.back-to-main-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #A1A1AA;
+  font-size: .8rem;
+  font-weight: 10;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-to-main-button:hover {
+  color: white;
+}
