@@ -5,6 +5,8 @@ import Section from './components/Section';
 import Software from './views/Software';
 import Photography from './views/Photography';
 import ActingModeling from './views/ActingModeling';
+import PortraitureView from './views/PortraitureView';
+import StreetView from './views/StreetView';
 import './App.css';
 
 function App() {
@@ -96,6 +98,8 @@ function App() {
           } />
           <Route path="/software" element={<Software />} />
           <Route path="/photography" element={<Photography />} />
+          <Route path="/photography/portraiture" element={<PortraitureView />} />
+          <Route path="/photography/street" element={<StreetView />} />
           <Route path="/acting-modeling" element={<ActingModeling />} />
         </Routes>
       </main>

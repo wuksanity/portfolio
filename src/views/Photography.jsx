@@ -4,11 +4,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./Photography.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function PhotographyPortfolio() {
   const [activeSection, setActiveSection] = useState(null);
   const portraitGalleryRef = useRef(null);
   const streetGalleryRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
@@ -129,7 +131,7 @@ export default function PhotographyPortfolio() {
             <div className="gallery-header">
               <h2 className="gallery-title"> PORTRAITURE</h2>
               <button 
-                onClick={() => setActiveSection("portraiture")}
+                onClick={() => navigate('/photography/portraiture')}
                 className="view-all-button"
               >
                 View all <ArrowRight className="view-all-icon" />
@@ -201,7 +203,7 @@ export default function PhotographyPortfolio() {
             <div className="gallery-header">
               <h2 className="gallery-title">STREET</h2>
               <button 
-                onClick={() => setActiveSection("street")}
+                onClick={() => navigate('/photography/street')}
                 className="view-all-button"
               >
                 View all <ArrowRight className="view-all-icon" />
