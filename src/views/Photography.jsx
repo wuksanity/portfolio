@@ -10,7 +10,7 @@ export default function PhotographyPortfolio() {
   const [activeSection, setActiveSection] = useState(null);
   const portraitGalleryRef = useRef(null);
   const streetGalleryRef = useRef(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate();   
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
