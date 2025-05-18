@@ -10,26 +10,26 @@ export default function PhotographyPortfolio() {
   const [activeSection, setActiveSection] = useState(null);
   const portraitGalleryRef = useRef(null);
   const streetGalleryRef = useRef(null);
-  const navigate = useNavigate();   
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, []);
 
   const portraitPhotos = [
-    { id: 1, src: 'src/assets/borgar.jpg', alt: 'Portrait 1' },
-    { id: 2, src: 'src/assets/bridge.jpg', alt: 'Portrait 2' },
-    { id: 3, src: 'src/assets/cam.jpg', alt: 'Portrait 3' },
-    { id: 4, src: 'src/assets/couch.jpg', alt: 'Portrait 4' },
-    { id: 5, src: 'src/assets/field.jpg', alt: 'Portrait 5' }
+    { id: 1, src: '/assets/borgar.JPG', alt: 'Portrait 1' },
+    { id: 2, src: '/assets/bridge.jpg', alt: 'Portrait 2' },
+    { id: 3, src: '/assets/cam.jpg', alt: 'Portrait 3' },
+    { id: 4, src: '/assets/couch.JPG', alt: 'Portrait 4' },
+    { id: 5, src: '/assets/field.JPG', alt: 'Portrait 5' }
   ];
 
   const streetPhotos = [
-    { id: 1, src: 'src/assets/lamp.jpg', alt: 'Street 1' },
-    { id: 2, src: 'src/assets/lotus.jpg', alt: 'Street 2' },
-    { id: 3, src: 'src/assets/seattle.jpg', alt: 'Street 3' },
-    { id: 4, src: 'src/assets/borgar.jpg', alt: 'Street 4' },
-    { id: 5, src: 'src/assets/cam.jpg', alt: 'Street 5' }];
+    { id: 1, src: '/assets/lamp.jpg', alt: 'Street 1' },
+    { id: 2, src: '/assets/lotus.jpg', alt: 'Street 2' },
+    { id: 3, src: '/assets/seattle.jpg', alt: 'Street 3' },
+    { id: 4, src: '/assets/borgar.JPG', alt: 'Street 4' },
+    { id: 5, src: '/assets/cam.jpg', alt: 'Street 5' }];
 
   const scrollGallery = (ref, direction) => {
     if (!ref.current) return;
@@ -79,7 +79,7 @@ export default function PhotographyPortfolio() {
                 className="hero-main-image-wrapper"
               >
                 <img 
-                  src="src/assets/lamp.jpg" 
+                  src="/assets/lamp.jpg" 
                   alt="Featured photography" 
                   className="hero-main-image"
                 />
@@ -104,7 +104,7 @@ export default function PhotographyPortfolio() {
                   className="hero-secondary-image-wrapper"
                 >
                   <img 
-                    src="src/assets/bridge.jpg" 
+                    src="/assets/bridge.jpg" 
                     alt="Portrait photography" 
                     className="hero-secondary-image"
                   />
@@ -117,7 +117,7 @@ export default function PhotographyPortfolio() {
                   className="hero-secondary-image-wrapper"
                 >
                   <img 
-                    src="src/assets/field.jpg" 
+                    src="/assets/field.JPG" 
                     alt="Street photography" 
                     className="hero-secondary-image"
                   />

@@ -1,0 +1,77 @@
+.street-view {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Fixed video background */
+  .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 145vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Transparent, scrollable area above the video */
+  .portraiture-scroll {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: transparent;
+    z-index: 1;
+  }
+  
+  .portraiture-canvas {
+    position: relative;
+    width: 100vw;
+    min-height: 1500px;
+    margin: 0 auto;
+    background: transparent;
+  }
+  
+  /* Each photo is absolutely positioned */
+  .portrait-photo {
+    position: absolute;
+    width: 500px; /* or whatever size you want */
+    height: auto;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+    transition: transform 0.2s;
+  }
+  
+  
+  body, #root {
+    background: transparent !important;
+  }
+  
+  .portraiture-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    padding: 24px 32px 12px 32px;
+    box-sizing: border-box;
+  }
+  
+  .portraiture-title {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 10;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  
+  
+  
