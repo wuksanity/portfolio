@@ -46,7 +46,7 @@ function App() {
                 ref={aboutRef}
                 title="walker riley" 
                 description="software engineer. photographer. actor. model. human being." 
-                backgroundImage="src/assets/field.jpg" 
+                backgroundImage="/assets/field.JPG" 
                 showButton={false}
                 className="first-section-content"
               />
@@ -63,7 +63,7 @@ function App() {
                     <p>Open to remote opportunities, Walker is passionate about creating impactful software at the intersection of data, AI, and clean, functional design.</p>
                   </>
                 } 
-                backgroundImage="src/assets/lotus.jpg" 
+                backgroundImage="/assets/lotus.jpg" 
               />
               <Section 
                 ref={photographyRef}
@@ -77,7 +77,7 @@ function App() {
                     <p>This isn't just photography. It's an exorcism.</p>
                   </>
                 }
-                backgroundImage="src/assets/lamp.jpg" 
+                backgroundImage="/assets/lamp.jpg" 
               />
               <Section 
                 ref={actingModelingRef}
@@ -92,7 +92,7 @@ function App() {
                     <p>Rooted in discipline and creative curiosity, I approach every project with professionalism and a collaborative spirit, always striving to elevate the work.</p>
                   </>
                 }
-                backgroundImage="src/assets/borgar.jpg"
+                backgroundImage="/assets/borgar.JPG"
               />
             </>
           } />

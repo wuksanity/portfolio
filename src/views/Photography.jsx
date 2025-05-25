@@ -17,19 +17,19 @@ export default function PhotographyPortfolio() {
   }, []);
 
   const portraitPhotos = [
-    { id: 1, src: '/assets/borgar.JPG', alt: 'Portrait 1' },
-    { id: 2, src: '/assets/bridge.jpg', alt: 'Portrait 2' },
-    { id: 3, src: '/assets/cam.jpg', alt: 'Portrait 3' },
-    { id: 4, src: '/assets/couch.JPG', alt: 'Portrait 4' },
-    { id: 5, src: '/assets/field.JPG', alt: 'Portrait 5' }
+    { id: 1, src: '/assets/portraits/shade1.jpg', alt: 'Portrait 1' },
+    { id: 2, src: '/assets/portraits/box2.JPG', alt: 'Portrait 2' },
+    { id: 3, src: '/assets/portraits/bubble1.jpg', alt: 'Portrait 3' },
+    { id: 4, src: '/assets/portraits/loon1.jpg', alt: 'Portrait 4' },
+    { id: 5, src: '/assets/portraits/rus3.jpg', alt: 'Portrait 5' }
   ];
 
   const streetPhotos = [
-    { id: 1, src: '/assets/lamp.jpg', alt: 'Street 1' },
-    { id: 2, src: '/assets/lotus.jpg', alt: 'Street 2' },
-    { id: 3, src: '/assets/seattle.jpg', alt: 'Street 3' },
-    { id: 4, src: '/assets/borgar.JPG', alt: 'Street 4' },
-    { id: 5, src: '/assets/cam.jpg', alt: 'Street 5' }];
+    { id: 1, src: '/assets/street/age3.jpg', alt: 'Street 1' },
+    { id: 2, src: '/assets/street/manwoman2.jpg', alt: 'Street 2' },
+    { id: 3, src: '/assets/street/us1.jpg', alt: 'Street 3' },
+    { id: 4, src: '/assets/street/metal1.jpg', alt: 'Street 4' },
+    { id: 5, src: '/assets/street/mother3.jpg', alt: 'Street 5' }];
 
   const scrollGallery = (ref, direction) => {
     if (!ref.current) return;
@@ -104,7 +104,7 @@ export default function PhotographyPortfolio() {
                   className="hero-secondary-image-wrapper"
                 >
                   <img 
-                    src="/assets/bridge.jpg" 
+                    src="/assets/street/scene6.jpg" 
                     alt="Portrait photography" 
                     className="hero-secondary-image"
                   />
@@ -117,7 +117,7 @@ export default function PhotographyPortfolio() {
                   className="hero-secondary-image-wrapper"
                 >
                   <img 
-                    src="/assets/field.JPG" 
+                    src="/assets/portraits/mop2.jpg" 
                     alt="Street photography" 
                     className="hero-secondary-image"
                   />
@@ -157,12 +157,9 @@ export default function PhotographyPortfolio() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ 
-                      scale: 1.03,
-                      boxShadow: "0 10px 30px -15px rgba(0,0,0,0.5)"
-                    }}
                     className="gallery-item"
-                    onClick={() => setActiveSection("portraiture")}
+                    onClick={() => navigate('/photography/portraiture')}
+                    style={{ cursor: 'pointer' }}
                   >
                     <img 
                       src={photo.src || "/placeholder.svg"} 
@@ -229,12 +226,9 @@ export default function PhotographyPortfolio() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ 
-                      scale: 1.03,
-                      boxShadow: "0 10px 30px -15px rgba(0,0,0,0.5)"
-                    }}
                     className="gallery-item"
-                    onClick={() => setActiveSection("street")}
+                    onClick={() => navigate('/photography/street')}
+                    style={{ cursor: 'pointer' }}
                   >
                     <img 
                       src={photo.src || "/placeholder.svg"} 
@@ -323,11 +317,6 @@ function PhotoGrid({ category }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            whileHover={{
-              scale: 1.03,
-              boxShadow: "0 10px 30px -15px rgba(0,0,0,0.5)",
-            }}
-            whileTap={{ scale: 0.97 }}
             className={`grid-item ${getSpanClass(index)}`}
             onClick={() => setSelectedPhoto(index)}
           >
