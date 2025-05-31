@@ -45,7 +45,7 @@ function App() {
               <Section 
                 ref={aboutRef}
                 title="walker riley" 
-                description="software engineer. photographer. actor. model. human being." 
+                description="software engineer. photographer. actor. human being." 
                 backgroundImage="/assets/field.JPG" 
                 showButton={false}
                 className="first-section-content"
