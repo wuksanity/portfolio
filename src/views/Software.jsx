@@ -8,22 +8,33 @@ import "./Software.css"
 const portfolioData = {
   "Work Experience": [
     {
-      name: "Senior Software Engineer - TechCorp",
+      name: "Artificial Intelligence Engineer - DataAnnotationTech",
       type: "file",
-      content: `Position: Senior Software Engineer
-Company: TechCorp Inc.
-Duration: Jan 2022 - Present
-Location: San Francisco, CA
+      content: `Position: Artificial Intelligence Engineer
+Company: DataAnnotationTech
+Duration: October 2024 - January 2025
 
-Responsibilities:
-• Led development of microservices architecture serving 1M+ users
-• Mentored junior developers and conducted code reviews
-• Implemented CI/CD pipelines reducing deployment time by 60%
-• Collaborated with product teams to deliver features on schedule
+Skills Acquired: Natural Language Processing, Prompt Engineering, Software Documentation
 
-Technologies: React, Node.js, AWS, Docker, Kubernetes`,
+• Analyzed and tested AI code models by prompting them with code-related queries, thoroughly documenting responses and identifying areas for improvement in model accuracy.
+• Debugged and enhanced the models by correcting code-related responses, ensuring they adhered to best coding practices, and refining the overall output for consistency and correctness.
+• Worked to improve the models' perceptions of responses by evaluating extracted fine-grained criteria, adjusting, adding, or removing criteria to refine model accuracy and reliability.
+`
     },
-    // ... (other work experience items)
+    {
+      name: "Machine Learning/Data Engineering Intern - Arch Capital Group",
+      type: "file",
+      content: `Position: Machine Learning/Data Engineering Intern
+Company: Arch Capital Group
+Duration: January 2024 - May 2024
+
+Skills Acquired: Python Machine Learning, Microsoft Azure, Data Engineering, Agile Development
+
+• Designed and developed a Python ML clustering model leveraging Optical Character Recognition (OCR) to extract, read, and organize data from various insurance document types with over 99% accuracy, enhancing document processing efficiency.
+• Conducted rigorous data engineering, testing, and optimization of machine learning models on the Microsoft Azure platform, improving performance metrics.
+• Collaborated with cross-functional agile teams to create, improve, and monitor ML solutions, ensuring consistency and alignment with project objectives.
+`
+    }
   ],
   Projects: [
     {
@@ -31,28 +42,19 @@ Technologies: React, Node.js, AWS, Docker, Kubernetes`,
       type: "folder",
       children: [
         {
-          name: "E-commerce Platform",
+          name: "Full Stack Engineer - adayinthelife.ink",
           type: "file",
-          content: `Project: E-commerce Platform
-Duration: 3 months
-Status: Completed
+          content: `Project: Personal
+Company: adayinthelife.ink
+Duration: August 2024 - December 2024
 
-Description:
-A full-featured e-commerce platform with user authentication, product catalog, shopping cart, and payment integration.
+Skills Acquired: Full Stack Development, React, Firebase, Authentication/Security, Architecture
 
-Features:
-• User registration and authentication
-• Product search and filtering
-• Shopping cart and checkout process
-• Payment integration with Stripe
-• Admin dashboard for inventory management
-• Responsive design for mobile and desktop
-
-Technologies: Next.js, TypeScript, Prisma, PostgreSQL, Stripe API, Tailwind CSS
-
-GitHub: github.com/username/ecommerce-platform
-Live Demo: ecommerce-demo.vercel.app`,
-        },
+• Designed, developed, and architected a full-stack social media journal application using JavaScript React, integrating Firebase as the backend for database, authentication, and real-time functionality.
+• Managed the complete development lifecycle, including architecture design, feature implementation, and debugging to ensure a robust and reliable application.
+• Learned the importance of consistently adhering to good coding principles by making, breaking, and improving nonoptimal code.
+`
+        }
         // ... (other project items)
       ],
     },
@@ -60,12 +62,11 @@ Live Demo: ecommerce-demo.vercel.app`,
   ],
   Education: [
     {
-      name: "B.S. Computer Science - University of Example",
+      name: "B.S. Computer Science - The Ohio State University",
       type: "file",
-      content: `Degree: Bachelor of Science in Computer Science
-Institution: University of Example
-Graduation: May 2021
-GPA: 3.85/4.0
+      content: `Degree: Bachelor of Science in Computer Science, Minor in Mathematics
+Institution: The Ohio State University
+Graduation: May 2024
 
 Relevant Coursework:
 • Data Structures & Algorithms
@@ -73,18 +74,7 @@ Relevant Coursework:
 • Computer Networks
 • Artificial Intelligence
 • Software Engineering
-
-Honors:
-• Dean's List (all semesters)
-• Undergraduate Research Award
 `
-    },
-    {
-      name: "Certifications",
-      type: "file",
-      content: `• AWS Certified Solutions Architect – Associate
-• Google Associate Cloud Engineer
-• Scrum Master Certified (SMC)`
     }
   ]
 }
@@ -159,7 +149,7 @@ export default function WindowsPortfolio() {
   const folderNames = Object.keys(portfolioData)
 
   return (
-    <div className="portfolio-container">
+    <div className="software-portfolio-container">
       {/* Desktop Background */}
       <div className="desktop-background" />
 

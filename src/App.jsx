@@ -55,12 +55,16 @@ function App() {
                 title="software" 
                 description={
                   <>
-                    <p>Walker Riley is a versatile software engineer with a strong focus on artificial intelligence, machine learning, and full-stack development.</p>
-                    <p>With experience refining AI models at DataAnnotationTech, he specialized in natural language processing and prompt engineering, meticulously debugging code-related responses to enhance model accuracy and reliability.</p>
-                    <p>His work at Arch Capital Group further solidified his machine learning expertise, where he engineered a Python-based OCR clustering model with 99% accuracy to automate insurance document processing, leveraging Microsoft Azure for optimization.</p>
-                    <p>Beyond AI, Walker thrives as a builder—architecting and developing adayinthelife.ink, a full-stack social media journal app using React and Firebase, where he tackled authentication, real-time data, and system design from the ground up.</p>
-                    <p>A graduate of The Ohio State University with a BS in Computer Science & Engineering (and a minor in Mathematics), he combines technical rigor in Python, Java, and JavaScript with a problem-solving mindset, constantly iterating to improve codebases and user experiences.</p>
-                    <p>Open to remote opportunities, Walker is passionate about creating impactful software at the intersection of data, AI, and clean, functional design.</p>
+                    <p>I’m a versatile software engineer passionate about building impactful tools at the intersection of artificial intelligence, data, and user-centered design.</p>
+
+                    <p>From refining AI language models and crafting intelligent automation systems to developing full-stack applications from the ground up, I combine deep technical skill with a creative, builder’s mindset.</p>
+
+                    <p>My experience spans AI research, machine learning engineering, and real-world app development—backed by a strong foundation in Python, JavaScript, and system architecture.</p>
+
+                    <p>Whether optimizing models in cloud environments or designing intuitive digital experiences, I approach every project with precision, curiosity, and a drive to make technology meaningful.</p>
+
+                    <p>I’m currently open to remote opportunities and excited to collaborate with teams focused on innovation, intelligent systems, and elegant engineering solutions.</p>
+
                   </>
                 } 
                 backgroundImage="/assets/lotus.jpg" 
@@ -71,7 +75,7 @@ function App() {
                 description={
                   <>
                     <p>I don't just take pictures — I hunt for the cracks in reality. The unguarded moments. The quiet chaos. My lens is drawn to the stories etched in scenes and in faces, the tension in empty streets, the raw, unfiltered truth that most people walk right past.</p>
-                    <p>This is conceptual portraiture with teeth. Street photography with a pulse. Every frame is a confrontation — with myself, with the subject, with the world. I don't just observe; I dissect. The result? Images that don't just sit there — they grab you by the neck and demand a reaction. </p>
+                    <p>This is conceptual portraiture with teeth. Street photography with a pulse. Every frame is a confrontation — with myself, with the subject, with the world. I don't just observe; I dissect. </p>
                     <p>Creative direction? It's not about control. It's about controlled chaos. I build concepts, then set them on fire. I coax vulnerability out of strangers, then freeze it in time. Every shoot is a tightrope walk between intention and accident.</p>
                     <p>This isn't just photography. It's an exorcism.</p>
                   </>
@@ -83,12 +87,16 @@ function App() {
                 title="acting-modeling" 
                 description={
                   <>
-                    <p>Driven by a passion for authentic storytelling, I bring depth and versatility to every role—both on screen and in front of the lens.</p>
-                    <p>As an actor, I've had the privilege of portraying a lead character in a short film and delivering nuanced performances in supporting roles for two drama series, honing my craft through collaboration and a commitment to emotional truth.</p>
-                    <p>My extensive background work has further sharpened my ability to enhance scenes with intention, even without dialogue.</p>
-                    <p>As a model, I specialize in creative photoshoots and look books, where I work closely with photographers and designers to bring their artistic visions to life.</p>
-                    <p>With a strong understanding of composition, movement, and expression, I adapt seamlessly to diverse styles—whether high-fashion editorial, commercial storytelling, or experimental concepts.</p>
-                    <p>Rooted in discipline and creative curiosity, I approach every project with professionalism and a collaborative spirit, always striving to elevate the work.</p>
+                    <p>Driven by a passion for authentic storytelling, I bring emotional depth and creative adaptability to every project—whether acting on screen or modeling in front of the lens.</p>
+
+                    <p>I've led short films, taken on dynamic supporting roles in drama series, and delivered grounded background performances that enhance every scene with purpose.</p>
+
+                    <p>As a model, I specialize in editorial shoots, look books, and commercial campaigns—collaborating closely with photographers and designers to bring bold, expressive concepts to life.</p>
+
+                    <p>My work has included opportunities with major brands like <strong>ASUS</strong>, giving me a strong foundation in both commercial and creative environments.</p>
+
+                    <p>Disciplined, curious, and professional, I approach every role with intention, aiming to create visuals that resonate and storytelling that connects.</p>
+
                   </>
                 }
                 backgroundImage="/assets/borgar.JPG"
