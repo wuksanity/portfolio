@@ -74,13 +74,12 @@ function App() {
                 title="photography" 
                 description={
                   <>
-                    <p>I don't just take pictures — I hunt for the cracks in reality. The unguarded moments. The quiet chaos. My lens is drawn to the stories etched in scenes and in faces, the tension in empty streets, the raw, unfiltered truth that most people walk right past.</p>
+                    <p>I hunt for the cracks in reality. The unguarded moments. The quiet chaos. My lens is drawn to the stories etched in scenes and in faces, the tension in empty streets, the raw, unfiltered truth that most people walk right past.</p>
                     <p>This is conceptual portraiture with teeth. Street photography with a pulse. Every frame is a confrontation — with myself, with the subject, with the world. I don't just observe; I dissect. </p>
                     <p>Creative direction? It's not about control. It's about controlled chaos. I build concepts, then set them on fire. I coax vulnerability out of strangers, then freeze it in time. Every shoot is a tightrope walk between intention and accident.</p>
-                    <p>This isn't just photography. It's an exorcism.</p>
                   </>
                 }
-                backgroundImage="/assets/lamp.jpg" 
+                backgroundImage="/assets/portraits/lamp.jpg" 
               />
               <Section 
                 ref={actingModelingRef}

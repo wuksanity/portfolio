@@ -25,11 +25,11 @@ export default function PhotographyPortfolio() {
   ];
 
   const streetPhotos = [
-    { id: 1, src: '/assets/street/age3.jpg', alt: 'Street 1' },
-    { id: 2, src: '/assets/street/manwoman2.jpg', alt: 'Street 2' },
-    { id: 3, src: '/assets/street/us1.jpg', alt: 'Street 3' },
-    { id: 4, src: '/assets/street/metal1.jpg', alt: 'Street 4' },
-    { id: 5, src: '/assets/street/mother3.jpg', alt: 'Street 5' }];
+    { id: 1, src: '/assets/street/loversbynight.jpg', alt: 'Street 1' },
+    { id: 2, src: '/assets/street/buswindow.jpg', alt: 'Street 2' },
+    { id: 3, src: '/assets/street/girlmen.jpg', alt: 'Street 3' },
+    { id: 4, src: '/assets/street/nycsubstrangers.jpg', alt: 'Street 4' },
+    { id: 5, src: '/assets/street/tuniswalk.jpg', alt: 'Street 5' }];
 
   const scrollGallery = (ref, direction) => {
     if (!ref.current) return;
@@ -79,7 +79,7 @@ export default function PhotographyPortfolio() {
                 className="hero-main-image-wrapper"
               >
                 <img 
-                  src="/assets/lamp.jpg" 
+                  src="/assets/portraits/lamp.jpg" 
                   alt="Featured photography" 
                   className="hero-main-image"
                 />
@@ -104,7 +104,7 @@ export default function PhotographyPortfolio() {
                   className="hero-secondary-image-wrapper"
                 >
                   <img 
-                    src="/assets/street/scene6.jpg" 
+                    src="/assets/street/bus.jpg" 
                     alt="Portrait photography" 
                     className="hero-secondary-image"
                   />
