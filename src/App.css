@@ -19,3 +19,7 @@ main {
   height: 100%;
   flex-direction: column;
 }
+
+.popup {
+  background: none;
+}

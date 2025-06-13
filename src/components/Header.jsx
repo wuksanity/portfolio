@@ -14,7 +14,7 @@ function Header({ scrollToSection, sectionRefs, onContactClick }) {
           <li><button className="contact-button" onClick={onContactClick}>contact</button></li>
         </ul>
         <div className="social-icons">
-          <a href="https://www.instagram.com/walkerileyyy/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/myfirstnameiswalker/" target="_blank" rel="noopener noreferrer">
             <FaInstagram style={{ cursor: 'pointer' }} />
           </a>
           <a href="mailto:walkerriley315@gmail.com" style={{ cursor: 'pointer' }}>

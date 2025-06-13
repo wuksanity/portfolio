@@ -111,7 +111,7 @@ function App() {
       </main>
       {showPopup && (
         <div className="popup">
-          <p>It's in the corner, didn't you see it, silly?</p>
+          <p>it's in the corner, didn't you see it, silly?</p>
           <button onClick={togglePopup}>Close</button>
         </div>
       )}
