@@ -81,6 +81,14 @@ body, #root {
   .portraiture-scroll {
     overflow-y: auto;
   }
+
+  .portraiture-header {
+    pointer-events: none;
+  }
+
+  .portraiture-header .back-to-main-button {
+    pointer-events: auto;
+  }
 }
 
 

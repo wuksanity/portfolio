@@ -215,7 +215,6 @@ export default function PhotographyPortfolio() {
                     <img 
                       src={photo.src || "/placeholder.svg"} 
                       alt={photo.alt} 
-                      loading={index >= 3 ? 'lazy' : 'eager'}
                       className="gallery-image portrait-image"
                     />
                   </motion.div>
@@ -285,7 +284,6 @@ export default function PhotographyPortfolio() {
                     <img 
                       src={photo.src || "/placeholder.svg"} 
                       alt={photo.alt} 
-                      loading={index >= 3 ? 'lazy' : 'eager'}
                       className="gallery-image street-image"
                     />
                   </motion.div>

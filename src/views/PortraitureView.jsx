@@ -55,6 +55,7 @@ export default function PortraitureView() {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const windowWidth = useWindowWidth();
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
   const BASE_WIDTH = 1500; // design width for layout
   const scaleFactor = windowWidth < BASE_WIDTH ? windowWidth / BASE_WIDTH : 1;
   const isMobile = windowWidth <= 768;
@@ -99,8 +100,8 @@ export default function PortraitureView() {
               key={photo.id}
               src={photo.src}
               alt={photo.alt}
-              loading={idx >= 6 ? 'lazy' : 'eager'}
               className="portrait-photo"
+              onClick={() => setSelectedPhoto(photo)}
               style={{
                 left: isMobile
                   ? Math.min(photo.x, BASE_WIDTH - (photo.width || 500))
@@ -112,6 +113,14 @@ export default function PortraitureView() {
           ))}
         </div>
       </div>
+
+      {selectedPhoto && (
+        <div className="photo-modal" onClick={() => setSelectedPhoto(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedPhoto.src} alt={selectedPhoto.alt} className="modal-image" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
