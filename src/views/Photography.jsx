@@ -6,6 +6,54 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./Photography.css";
 import { useNavigate } from 'react-router-dom';
 
+// Hook to enable click-and-drag / touch-drag scrolling
+function useDragScroll(ref) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const onPointerDown = (e) => {
+      if (e.pointerType !== 'mouse') return; // Only enable drag scroll for mouse
+      isDown = true;
+      el.classList.add('dragging');
+      startX = e.pageX || (e.touches && e.touches[0].pageX);
+      scrollLeft = el.scrollLeft;
+    };
+
+    const onPointerMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX || (e.touches && e.touches[0].pageX);
+      const walk = startX - x; // positive = scroll right
+      el.scrollLeft = scrollLeft + walk;
+    };
+
+    const onPointerUp = () => {
+      if (!isDown) return;
+      isDown = false;
+      el.classList.remove('dragging');
+    };
+
+    // Use pointer events for mouse & touch
+    el.addEventListener('pointerdown', onPointerDown);
+    el.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+
+    // Prevent image dragging while swiping
+    el.addEventListener('dragstart', (e) => e.preventDefault());
+
+    return () => {
+      el.removeEventListener('pointerdown', onPointerDown);
+      el.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+    };
+  }, [ref]);
+}
+
 export default function PhotographyPortfolio() {
   const [activeSection, setActiveSection] = useState(null);
   const portraitGalleryRef = useRef(null);
@@ -15,6 +63,9 @@ export default function PhotographyPortfolio() {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, []);
+
+  useDragScroll(portraitGalleryRef);
+  useDragScroll(streetGalleryRef);
 
   const portraitPhotos = [
     { id: 1, src: '/assets/portraits/shade1.jpg', alt: 'Portrait 1' },
@@ -73,8 +124,8 @@ export default function PhotographyPortfolio() {
             <div className="hero-grid-container">
               {/* Large Featured Photo on Left with Text */}
               <motion.div 
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
+                initial={{ opacity: 0.8 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 1.2 }}
                 className="hero-main-image-wrapper"
               >
@@ -164,6 +215,7 @@ export default function PhotographyPortfolio() {
                     <img 
                       src={photo.src || "/placeholder.svg"} 
                       alt={photo.alt} 
+                      loading={index >= 3 ? 'lazy' : 'eager'}
                       className="gallery-image portrait-image"
                     />
                   </motion.div>
@@ -233,6 +285,7 @@ export default function PhotographyPortfolio() {
                     <img 
                       src={photo.src || "/placeholder.svg"} 
                       alt={photo.alt} 
+                      loading={index >= 3 ? 'lazy' : 'eager'}
                       className="gallery-image street-image"
                     />
                   </motion.div>

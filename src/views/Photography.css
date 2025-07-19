@@ -151,6 +151,15 @@
   display: none;
 }
 
+.gallery-scroller.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto; /* disable smooth for real-time dragging */
+}
+
+.gallery-scroller {
+  cursor: grab;
+}
+
 .gallery-item {
   flex: 0 0 auto;
   width: 500px;
@@ -356,6 +365,23 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  /* Enable smooth card snapping on horizontal scroll */
+  .gallery-scroller {
+    scroll-snap-type: x mandatory;
+  }
+
+  .gallery-item {
+    flex: 0 0 80%; /* show almost full-width card */
+    width: 80%;
+    height: auto; /* maintain aspect-ratio via img */
+    scroll-snap-align: center;
+    margin: 0 1rem;
+  }
+
+  .gallery-image {
+    aspect-ratio: 4/3;
+  }
+
   .hero-grid-container {
     flex-direction: column;
     height: auto;
@@ -387,11 +413,6 @@
     font-size: 2rem;
   }
 
-  .gallery-item {
-    width: 250px;
-    height: 350px;
-  }
-
   .mobile-indicators {
     display: flex;
   }
@@ -399,9 +420,34 @@
   .gallery-nav-button {
     display: none;
   }
+
+  /* hide right column secondary images */
+  .hero-right-column {
+    display: none;
+  }
+
+  /* Ensure main image wrapper takes full height */
+  .hero-main-image-wrapper {
+    height: 60vh;
+  }
 }
 
 @media (max-width: 480px) {
+  /* Narrower phones */
+  .gallery-item {
+    flex: 0 0 90%;
+    width: 90%;
+    margin: 0 0.5rem;
+  }
+
+  .hero-main-image-wrapper {
+    height: 45vh;
+  }
+
+  .hero-secondary-image-wrapper {
+    height: 30vh;
+  }
+
   .photography-portfolio {
     padding: 1rem;
   }
@@ -437,6 +483,11 @@
 
   .portrait-large, .street-wide {
     grid-column: span 1;
+  }
+
+  /* enforce hidden for extra small */
+  .hero-right-column {
+    display: none !important;
   }
 }
 

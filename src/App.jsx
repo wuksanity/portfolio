@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Section from './components/Section';
@@ -7,16 +7,32 @@ import Photography from './views/Photography';
 import ActingModeling from './views/ActingModeling';
 import PortraitureView from './views/PortraitureView';
 import StreetView from './views/StreetView';
+import MobileWarningPopup from './components/MobileWarningPopup';
 import './App.css';
 
 function App() {
   const location = useLocation();
   const [showPopup, setShowPopup] = useState(false);
+  const [showMobileWarning, setShowMobileWarning] = useState(false);
 
   const aboutRef = useRef(null);
   const softwareRef = useRef(null);
   const photographyRef = useRef(null);
   const actingModelingRef = useRef(null);
+
+  // Detect mobile viewport on first load
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    const dismissed = localStorage.getItem('mobileWarningDismissed');
+    if (isMobile && !dismissed) {
+      setShowMobileWarning(true);
+    }
+  }, []);
+
+  const dismissMobileWarning = () => {
+    setShowMobileWarning(false);
+    localStorage.setItem('mobileWarningDismissed', 'true');
+  };
 
   // Scroll function
   const scrollToSection = (ref) => {
@@ -55,15 +71,15 @@ function App() {
                 title="software" 
                 description={
                   <>
-                    <p>I’m a versatile software engineer passionate about building impactful tools at the intersection of artificial intelligence, data, and user-centered design.</p>
+                    <p>I'm a versatile software engineer passionate about building impactful tools at the intersection of artificial intelligence, data, and user-centered design.</p>
 
-                    <p>From refining AI language models and crafting intelligent automation systems to developing full-stack applications from the ground up, I combine deep technical skill with a creative, builder’s mindset.</p>
+                    <p>From refining AI language models and crafting intelligent automation systems to developing full-stack applications from the ground up, I combine deep technical skill with a creative, builder's mindset.</p>
 
                     <p>My experience spans AI research, machine learning engineering, and real-world app development—backed by a strong foundation in Python, JavaScript, and system architecture.</p>
 
                     <p>Whether optimizing models in cloud environments or designing intuitive digital experiences, I approach every project with precision, curiosity, and a drive to make technology meaningful.</p>
 
-                    <p>I’m currently open to remote opportunities and excited to collaborate with teams focused on innovation, intelligent systems, and elegant engineering solutions.</p>
+                    <p>I'm currently open to remote opportunities and excited to collaborate with teams focused on innovation, intelligent systems, and elegant engineering solutions.</p>
 
                   </>
                 } 
@@ -111,9 +127,14 @@ function App() {
       </main>
       {showPopup && (
         <div className="popup">
-          <p>it's in the corner, didn't you see it, silly?</p>
+          <p>it's...in...the...corner</p>
           <button onClick={togglePopup}>Close</button>
         </div>
+      )}
+
+      {/* Mobile-only optimisation notice */}
+      {showMobileWarning && (
+        <MobileWarningPopup onClose={dismissMobileWarning} />
       )}
     </>
   );

@@ -45,12 +45,17 @@ function ActingModeling() {
 }
 
 function ModelingTab() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openImage = (src, alt) => setSelectedImage({ src, alt });
+  const closeImage = () => setSelectedImage(null);
+
   return (
     <div className="modeling-container">
       {/* Artistic Grid Layout */}
       <div className="modeling-grid">
         {/* Large portrait image */}
-        <div className="grid-item portrait-large">
+        <div className="grid-item portrait-large" onClick={() => openImage('/assets/modeling/tank2.jpeg','Portrait modeling shot')}>
           <img
             src="/assets/modeling/tank2.jpeg"
             alt="Portrait modeling shot"
@@ -60,7 +65,7 @@ function ModelingTab() {
         </div>
 
         {/* Medium landscape image */}
-        <div className="grid-item landscape-medium">
+        <div className="grid-item landscape-medium" onClick={() => openImage('/assets/modeling/jean5.jpeg','Fashion modeling shot')}>
           <img
             src="/assets/modeling/jean5.jpeg"
             alt="Fashion modeling shot"
@@ -69,7 +74,7 @@ function ModelingTab() {
           <div className="image-overlay" />
         </div>
 
-        {/* Video reel */}
+        {/* Video reel (non-clickable) */}
         <div className="grid-item video-placeholder">
           <div className="video-content">
             <video
@@ -78,14 +83,14 @@ function ModelingTab() {
               loop
               muted
               controls
-              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
             />
             <p className="video-label">VIDEO REEL</p>
           </div>
         </div>
 
         {/* Small square images */}
-        <div className="grid-item square-small">
+        <div className="grid-item square-small" onClick={() => openImage('/assets/modeling/wake1.jpeg','Editorial shot')}>
           <img
             src="/assets/modeling/wake1.jpeg"
             alt="Editorial shot"
@@ -94,7 +99,7 @@ function ModelingTab() {
           <div className="image-overlay" />
         </div>
 
-        <div className="grid-item square-small">
+        <div className="grid-item square-small" onClick={() => openImage('/assets/modeling/wake2.jpeg','Beauty shot')}>
           <img
             src="/assets/modeling/wake2.jpeg"
             alt="Beauty shot"
@@ -104,7 +109,7 @@ function ModelingTab() {
         </div>
 
         {/* Wide landscape image */}
-        <div className="grid-item landscape-wide">
+        <div className="grid-item landscape-wide" onClick={() => openImage('/assets/modeling/lamin3.jpeg','Campaign shot')}>
           <img
             src="/assets/modeling/lamin3.jpeg"
             alt="Campaign shot"
@@ -113,7 +118,7 @@ function ModelingTab() {
           <div className="image-overlay" />
         </div>
 
-        {/* Another video space */}
+        {/* Another video space (placeholder) */}
         <div className="grid-item video-small">
           <div className="video-content">
             <div className="small-play-button-container">
@@ -124,7 +129,7 @@ function ModelingTab() {
         </div>
 
         {/* Tall portrait */}
-        <div className="grid-item portrait-tall">
+        <div className="grid-item portrait-tall" onClick={() => openImage('/assets/modeling/lamin1.jpeg','Studio portrait')}>
           <img
             src="/assets/modeling/lamin1.jpeg"
             alt="Studio portrait"
@@ -134,7 +139,7 @@ function ModelingTab() {
         </div>
 
         {/* Medium square */}
-        <div className="grid-item square-medium">
+        <div className="grid-item square-medium" onClick={() => openImage('/assets/modeling/lamin2.jpeg','Artistic shot')}>
           <img
             src="/assets/modeling/lamin2.jpeg"
             alt="Artistic shot"
@@ -144,7 +149,7 @@ function ModelingTab() {
         </div>
 
         {/* Small images */}
-        <div className="grid-item square-small">
+        <div className="grid-item square-small" onClick={() => openImage('/assets/modeling/red1.jpeg','Detail shot')}>
           <img
             src="/assets/modeling/red1.jpeg"
             alt="Detail shot"
@@ -153,7 +158,7 @@ function ModelingTab() {
           <div className="image-overlay" />
         </div>
 
-        <div className="grid-item landscape-small">
+        <div className="grid-item landscape-small" onClick={() => openImage('/assets/modeling/jean2.jpeg','Lifestyle shot')}>
           <img
             src="/assets/modeling/jean2.jpeg"
             alt="Lifestyle shot"
@@ -162,8 +167,17 @@ function ModelingTab() {
           <div className="image-overlay" />
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="photo-modal" onClick={closeImage}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <img src={selectedImage.src} alt={selectedImage.alt} className="modal-image" />
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 function ActingTab() {

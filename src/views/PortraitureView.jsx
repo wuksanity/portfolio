@@ -55,6 +55,9 @@ export default function PortraitureView() {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const windowWidth = useWindowWidth();
+  const BASE_WIDTH = 1500; // design width for layout
+  const scaleFactor = windowWidth < BASE_WIDTH ? windowWidth / BASE_WIDTH : 1;
+  const isMobile = windowWidth <= 768;
 
   return (
     <div className="portraiture-view">
@@ -83,17 +86,27 @@ export default function PortraitureView() {
       </div>
 
       <div className="portraiture-scroll">
-        <div className="portraiture-canvas">
-          {portraitPhotos.map(photo => (
+        <div
+          className="portraiture-canvas"
+          style={{
+            width: `${BASE_WIDTH}px`,
+            transform: `scale(${scaleFactor})`,
+            transformOrigin: 'top left'
+          }}
+        >
+          {portraitPhotos.map((photo, idx) => (
             <img
               key={photo.id}
               src={photo.src}
               alt={photo.alt}
+              loading={idx >= 6 ? 'lazy' : 'eager'}
               className="portrait-photo"
               style={{
-                left: Math.min(photo.x, windowWidth - (photo.width || 500)),
+                left: isMobile
+                  ? Math.min(photo.x, BASE_WIDTH - (photo.width || 500))
+                  : Math.min(photo.x, windowWidth - (photo.width || 500)),
                 top: photo.y,
-                width: photo.width ? `${photo.width}px` : '500px'
+                width: `${photo.width || 500}px`
               }}
             />
           ))}

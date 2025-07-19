@@ -56,3 +56,15 @@
   background: white;
   color: black;
 }
+
+@media (max-width: 768px) {
+
+  .section-content h2 {
+    font-size: 2rem;
+  }
+
+  .view-more {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
