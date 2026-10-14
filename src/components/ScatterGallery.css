@@ -1,0 +1,71 @@
+.scatter-view {
+  position: relative;
+  isolation: isolate; /* lets the video sit behind the photos without hiding behind the page background */
+  min-height: 100vh;
+}
+
+.scatter-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 145vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.scatter-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 24px 32px 12px 32px;
+  box-sizing: border-box;
+}
+
+.scatter-title {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 10;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* The stage has the canvas's scaled height, so the page scrolls exactly to the last photo. */
+.scatter-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.scatter-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform-origin: top left;
+}
+
+.scatter-photo {
+  position: absolute;
+  height: auto;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .scatter-header {
+    pointer-events: none;
+  }
+
+  .scatter-header .back-button {
+    pointer-events: auto;
+  }
+}

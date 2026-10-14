@@ -1,22 +1,24 @@
+/* Every rule is scoped to this page so it cannot restyle other pages. */
+
 /* Page Layout */
-.page-container {
+.acting-modeling-page {
   min-height: 100vh;
   background-color: white;
 }
 
-.main-navigation {
+.acting-modeling-page .main-navigation {
   display: flex;
   justify-content: center;
   padding-top: 3rem;
   padding-bottom: 4rem;
 }
 
-.tab-buttons-container {
+.acting-modeling-page .tab-buttons-container {
   display: flex;
   gap: 4rem;
 }
 
-.tab-button {
+.acting-modeling-page .tab-button {
   all: unset; /* Reset all styles */
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -30,412 +32,182 @@
   transition: all 0.2s ease;
 }
 
-.tab-button:hover {
+.acting-modeling-page .tab-button:hover {
   color: #666666; /* Slightly darker on hover */
 }
 
-.active-tab {
+.acting-modeling-page .active-tab {
   color: #000000; /* Black text for active tab */
   border-bottom: 1px solid #000000; /* Black underline */
   font-weight: 400; /* Slightly bolder when active */
 }
 
 /* Make both buttons have the same underline behavior */
-.tab-button.inactive-tab {
+.acting-modeling-page .tab-button.inactive-tab {
   border-bottom: 1px solid transparent; /* Explicit transparent underline */
 }
 
-.content-container {
+.acting-modeling-page .content-container {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 @media (min-width: 768px) {
-  .content-container {
+  .acting-modeling-page .content-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 @media (min-width: 1024px) {
-  .content-container {
+  .acting-modeling-page .content-container {
     padding-left: 6rem;
     padding-right: 6rem;
   }
 }
 
 /* Modeling Tab */
-.modeling-container {
+.acting-modeling-page .modeling-container {
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
+  container-type: inline-size; /* lets the grid size its rows from its own width */
 }
 
-.modeling-grid {
+/* Tiles span --cols of 12 columns and --rows rows (set per tile in ActingModeling.jsx).
+   Rows are 3.05 columns tall, so a tile keeps its shape at every window size
+   (250px rows at a 1440px window, as before). */
+.acting-modeling-page .modeling-grid {
+  --gap: 1rem;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1rem;
-  grid-auto-rows: 200px;
+  gap: var(--gap);
+  grid-auto-rows: 200px; /* browsers without container units */
+  grid-auto-rows: calc((100cqw - 11 * var(--gap)) / 12 * 3.05);
+  padding-bottom: 6rem;
 }
 @media (min-width: 768px) {
-  .modeling-grid {
-    gap: 1.5rem;
-    grid-auto-rows: 250px;
+  .acting-modeling-page .modeling-grid {
+    --gap: 1.5rem;
   }
 }
 
-.grid-item {
+.acting-modeling-page .grid-item {
   position: relative;
   overflow: hidden;
+  border-radius: 0.5rem;
+  grid-column: span var(--cols);
+  grid-row: span var(--rows);
 }
 
-.portrait-large {
-  grid-column: span 6 / span 6;
-  grid-row: span 3 / span 3;
-}
-@media (min-width: 768px) {
-  .portrait-large {
-    grid-column: span 4 / span 4;
-  }
+.acting-modeling-page .grid-item.clickable {
+  cursor: pointer;
 }
 
-.landscape-medium {
-  grid-column: span 6 / span 6;
-  grid-row: span 2 / span 2;
-}
-@media (min-width: 768px) {
-  .landscape-medium {
-    grid-column: span 5 / span 5;
-  }
-}
-
-.video-placeholder {
-  grid-column: span 6 / span 6;
-  grid-row: span 2 / span 2;
-  background-color: rgb(243, 244, 246);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media (min-width: 768px) {
-  .video-placeholder {
-    grid-column: span 3 / span 3;
-  }
-}
-
-.square-small {
-  grid-column: span 3 / span 3;
-  grid-row: span 1 / span 1;
-}
-@media (min-width: 768px) {
-  .square-small {
-    grid-column: span 2 / span 2;
-  }
-}
-
-.landscape-wide {
-  grid-column: span 6 / span 6;
-  grid-row: span 2 / span 2;
-}
-@media (min-width: 768px) {
-  .landscape-wide {
-    grid-column: span 7 / span 7;
-  }
-}
-
-.video-small {
-  grid-column: span 6 / span 6;
-  grid-row: span 1 / span 1;
-  background-color: rgb(249, 250, 251);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media (min-width: 768px) {
-  .video-small {
-    grid-column: span 3 / span 3;
-  }
-}
-
-.portrait-tall {
-  grid-column: span 6 / span 6;
-  grid-row: span 3 / span 3;
-}
-@media (min-width: 768px) {
-  .portrait-tall {
-    grid-column: span 3 / span 3;
-  }
-}
-
-.square-medium {
-  grid-column: span 6 / span 6;
-  grid-row: span 2 / span 2;
-}
-@media (min-width: 768px) {
-  .square-medium {
-    grid-column: span 4 / span 4;
-  }
-}
-
-.landscape-small {
-  grid-column: span 3 / span 3;
-  grid-row: span 1 / span 1;
-}
-@media (min-width: 768px) {
-  .landscape-small {
-    grid-column: span 3 / span 3;
-  }
-}
-
-.grid-image {
+.acting-modeling-page .grid-image,
+.acting-modeling-page .grid-video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.acting-modeling-page .grid-image {
   transition: transform 0.7s;
-  image-rendering: -webkit-optimize-contrast; /* sharpen on WebKit */
-  image-rendering: crisp-edges; /* fallback */
   transform: translateZ(0); /* promote to its own layer */
 }
-.grid-item:hover .grid-image {
+.acting-modeling-page .grid-item:hover .grid-image {
   transform: scale(1.05);
 }
 
-.image-overlay {
+.acting-modeling-page .grid-video {
+  background-color: rgb(243, 244, 246);
+}
+
+.acting-modeling-page .image-overlay {
   position: absolute;
   inset: 0;
   background-color: black;
   opacity: 0;
   transition: all 0.3s;
 }
-.grid-item:hover .image-overlay {
+.acting-modeling-page .grid-item:hover .image-overlay {
   opacity: 0.1;
 }
 
-.video-content {
-  text-align: center;
-}
-
-.play-button-container {
-  width: 4rem;
-  height: 4rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.75rem;
-  transition: all 0.3s;
-}
-.grid-item:hover .play-button-container {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.play-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: white;
-  margin-left: 0.25rem;
-}
-
-.video-label {
-  font-size: 0.875rem;
-  color: rgb(75, 85, 99);
-  font-weight: 300;
-}
-
-.small-play-button-container {
-  width: 3rem;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.5rem;
-  transition: all 0.3s;
-}
-.grid-item:hover .small-play-button-container {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.small-play-icon {
-  width: 1rem;
-  height: 1rem;
-  color: white;
-  margin-left: 0.125rem;
-}
-
-.small-video-label {
-  font-size: 0.75rem;
-  color: rgb(75, 85, 99);
-  font-weight: 300;
-}
-
-/* Acting Tab */
-.acting-container {
-  max-width: 56rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.acting-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.acting-title {
-  font-size: 2.25rem;
-  font-weight: 300;
-  color: rgb(209, 213, 219);
-  letter-spacing: 0.05em;
-}
-@media (min-width: 768px) {
-  .acting-title {
-    font-size: 3.75rem;
-  }
-}
-
-.acting-divider {
-  width: 6rem;
-  height: 1px;
-  background-color: rgb(209, 213, 219);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.acting-message {
-  color: rgb(107, 114, 128);
-  font-weight: 300;
-  letter-spacing: 0.025em;
-}
-
-.video-modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.video-modal-content {
-  position: relative;
-  background: #111;
-  padding: 2rem 1rem 1rem 1rem;
-  border-radius: 12px;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.back-to-main {
-  position: fixed;
-  top: 1rem;
-  left: 2rem;
-  z-index: 100;
-}
-
-.back-to-main-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  color: #A1A1AA;
-  font-size: .8rem;
-  font-weight: 10;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.back-to-main-button:hover {
-  color: #000;
-}
-
-.back-icon {
-  width: 1rem;
-  height: 1rem;
-}
-
-/* Image modal */
-.photo-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1100;
-}
-
-.modal-content {
-  max-width: 90vw;
-  max-height: 90vh;
-  background: transparent;
-  overflow: hidden;
-}
-
-.modal-image {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
+/* Phones: two columns; each tile is full or half width and shaped like its photo. */
 @media (max-width: 640px) {
-  .modeling-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 160px;
+  .acting-modeling-page .modeling-grid {
+    --gap: 0.75rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
   }
 
-  /* Override item spans for small screens */
-  .portrait-large,
-  .landscape-medium,
-  .landscape-wide,
-  .video-placeholder,
-  .video-small,
-  .portrait-tall,
-  .square-medium {
-    grid-column: span 2 / span 2;
-  }
-
-  .portrait-large {
-    grid-row: span 3;
-  }
-
-  .portrait-tall {
-    grid-row: span 3;
-  }
-
-  .landscape-medium,
-  .landscape-wide,
-  .video-placeholder,
-  .square-medium,
-  .video-small {
-    grid-row: span 2;
-  }
-
-  .square-small,
-  .landscape-small {
-    grid-column: span 1 / span 1;
-    grid-row: span 1 / span 1;
-  }
-
-  /* Reduce gaps */
-  .modeling-grid {
-    gap: 0.75rem;
+  .acting-modeling-page .grid-item {
+    grid-column: span var(--phone-cols);
+    grid-row: auto;
+    aspect-ratio: var(--phone-shape);
   }
 
   /* Adjust image hover scale to 1.03 to avoid overflow */
-  .grid-item:hover .grid-image {
+  .acting-modeling-page .grid-item:hover .grid-image {
     transform: scale(1.03);
+  }
+}
+
+/* Acting Tab: clips in rank order. Within a row each clip's width is proportional to its
+   shape (flex-grow is set to width / height), so the clips in a row share one height. */
+.acting-modeling-page .clips {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.acting-modeling-page .clips-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.acting-modeling-page .clip {
+  flex-basis: 0;
+  min-width: 0;
+  margin: 0;
+}
+
+.acting-modeling-page .clip-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+  border-radius: 0.5rem;
+}
+
+.acting-modeling-page .clip-caption {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: rgb(107, 114, 128);
+}
+
+.acting-modeling-page .clip-title {
+  color: #000;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .acting-modeling-page .clips-row {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .acting-modeling-page .clip {
+    flex-basis: auto;
+    width: 100%;
   }
 }

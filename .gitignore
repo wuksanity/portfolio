@@ -12,6 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
+.vercel
 
 # Editor directories and files
 .vscode/*
@@ -24,9 +25,16 @@ dist-ssr
 *.sln
 *.sw?
 
-# Media files (added)
+# Media
+# Full-resolution originals live in media-originals/ and never ship (several
+# exceed GitHub's 100 MB file limit). public/ holds the web-optimized copies the
+# site actually serves, so it is tracked: Vercel builds from the repo and only
+# sees what is committed.
+media-originals/
+scripts/media/.cache.json
 *.jpg
 *.JPG
 *.mp4
 *.mov
 *.jpeg
+!/public/**

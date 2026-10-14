@@ -30,16 +30,16 @@ function Header({ scrollToSection, sectionRefs, onContactClick }) {
           <li><button className="contact-button" onClick={() => { setIsMenuOpen(false); onContactClick(); }}>contact</button></li>
         </ul>
         <div className="social-icons">
-          <a href="https://www.instagram.com/myfirstnameiswalker/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/myfirstnameiswalker/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <FaInstagram style={{ cursor: 'pointer' }} />
           </a>
-          <a href="mailto:walkerriley315@gmail.com" style={{ cursor: 'pointer' }}>
+          <a href="mailto:walkerriley315@gmail.com" style={{ cursor: 'pointer' }} aria-label="Email">
             <FaEnvelope />
           </a>
-          <a href="https://www.tiktok.com/@wuksanity" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.tiktok.com/@wuksanity" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
             <FaTiktok style={{ cursor: 'pointer' }} />
           </a>
-          <a href="https://github.com/wuksanity" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/wuksanity" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <FaGithub style={{ cursor: 'pointer' }} />
           </a>
         </div>

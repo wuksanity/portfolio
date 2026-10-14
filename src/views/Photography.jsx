@@ -1,12 +1,11 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import "./Photography.css";
 import { useNavigate } from 'react-router-dom';
+import BackButton from "../components/BackButton";
+import Photo from "../components/Photo";
+import "./Photography.css";
 
-// Hook to enable click-and-drag / touch-drag scrolling
+// Hook to enable click-and-drag scrolling with a mouse (touch scrolls natively)
 function useDragScroll(ref) {
   useEffect(() => {
     const el = ref.current;
@@ -17,19 +16,17 @@ function useDragScroll(ref) {
     let scrollLeft = 0;
 
     const onPointerDown = (e) => {
-      if (e.pointerType !== 'mouse') return; // Only enable drag scroll for mouse
+      if (e.pointerType !== 'mouse') return;
       isDown = true;
       el.classList.add('dragging');
-      startX = e.pageX || (e.touches && e.touches[0].pageX);
+      startX = e.pageX;
       scrollLeft = el.scrollLeft;
     };
 
     const onPointerMove = (e) => {
       if (!isDown) return;
       e.preventDefault();
-      const x = e.pageX || (e.touches && e.touches[0].pageX);
-      const walk = startX - x; // positive = scroll right
-      el.scrollLeft = scrollLeft + walk;
+      el.scrollLeft = scrollLeft + (startX - e.pageX);
     };
 
     const onPointerUp = () => {
@@ -38,373 +35,177 @@ function useDragScroll(ref) {
       el.classList.remove('dragging');
     };
 
-    // Use pointer events for mouse & touch
+    // Prevent image dragging while swiping
+    const onDragStart = (e) => e.preventDefault();
+
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
-
-    // Prevent image dragging while swiping
-    el.addEventListener('dragstart', (e) => e.preventDefault());
+    el.addEventListener('dragstart', onDragStart);
 
     return () => {
       el.removeEventListener('pointerdown', onPointerDown);
       el.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
+      el.removeEventListener('dragstart', onDragStart);
     };
   }, [ref]);
 }
 
+const portraitPhotos = [
+  { name: 'portraits/shade1', alt: 'Portrait from the shade series' },
+  { name: 'portraits/box2', alt: 'Portrait from the box series' },
+  { name: 'portraits/bubble1', alt: 'Portrait from the bubble series' },
+  { name: 'portraits/loon1', alt: 'Portrait from the loon series' },
+  { name: 'portraits/rus3', alt: 'Portrait from the rus series' },
+];
+
+const streetPhotos = [
+  { name: 'street/loversbynight', alt: 'Street photograph: lovers by night' },
+  { name: 'street/buswindow', alt: 'Street photograph: bus window' },
+  { name: 'street/girlmen', alt: 'Street photograph: girl and men' },
+  { name: 'street/nycsubstrangers', alt: 'Street photograph: NYC subway strangers' },
+  { name: 'street/tuniswalk', alt: 'Street photograph: Tunis walk' },
+];
+
+const GALLERY_SIZES = "(max-width: 480px) 90vw, (max-width: 768px) 80vw, 500px";
+
 export default function PhotographyPortfolio() {
-  const [activeSection, setActiveSection] = useState(null);
   const portraitGalleryRef = useRef(null);
   const streetGalleryRef = useRef(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page
-  }, []);
-
   useDragScroll(portraitGalleryRef);
   useDragScroll(streetGalleryRef);
 
-  const portraitPhotos = [
-    { id: 1, src: '/assets/portraits/shade1.jpg', alt: 'Portrait 1' },
-    { id: 2, src: '/assets/portraits/box2.JPG', alt: 'Portrait 2' },
-    { id: 3, src: '/assets/portraits/bubble1.jpg', alt: 'Portrait 3' },
-    { id: 4, src: '/assets/portraits/loon1.jpg', alt: 'Portrait 4' },
-    { id: 5, src: '/assets/portraits/rus3.jpg', alt: 'Portrait 5' }
-  ];
-
-  const streetPhotos = [
-    { id: 1, src: '/assets/street/loversbynight.jpg', alt: 'Street 1' },
-    { id: 2, src: '/assets/street/buswindow.jpg', alt: 'Street 2' },
-    { id: 3, src: '/assets/street/girlmen.jpg', alt: 'Street 3' },
-    { id: 4, src: '/assets/street/nycsubstrangers.jpg', alt: 'Street 4' },
-    { id: 5, src: '/assets/street/tuniswalk.jpg', alt: 'Street 5' }];
-
   const scrollGallery = (ref, direction) => {
     if (!ref.current) return;
-    
     const scrollAmount = 300;
-    const currentScroll = ref.current.scrollLeft;
-    
     ref.current.scrollTo({
-      left: direction === "left" ? currentScroll - scrollAmount : currentScroll + scrollAmount,
+      left: ref.current.scrollLeft + (direction === "left" ? -scrollAmount : scrollAmount),
       behavior: "smooth"
     });
   };
 
   return (
-    <main className="photography-portfolio">
-      <div className="back-to-main">
-        <button 
-          onClick={() => window.location.href = '/'}
-          className="back-to-main-button"
-        >
-          <ArrowLeft className="back-icon" />
-          take me home
-        </button>
-      </div>
-      {activeSection === null ? (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="portfolio-container"
-        >
-          <h1 className="portfolio-title">PORTFOLIO</h1>
-          
-          {/* Hero Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="hero-section"
-          >
-            <div className="hero-grid-container">
-              {/* Large Featured Photo on Left with Text */}
-              <motion.div 
-                initial={{ opacity: 0.8 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.2 }}
-                className="hero-main-image-wrapper"
-              >
-                <img 
-                  src="/assets/portraits/lamp.jpg" 
-                  alt="Featured photography" 
-                  className="hero-main-image"
-                />
-                <div className="hero-text-overlay">
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.9 }}
-                  >
-                    <h2 className="hero-heading">Capturing Moments</h2>
-                    <p className="hero-subheading">A visual journey through human expression and urban landscapes.</p>
-                  </motion.div>
+    <div className="photography-portfolio">
+      <BackButton onClick={() => navigate('/')} className="back-button-fixed">
+        take me home
+      </BackButton>
+
+      <div className="portfolio-container">
+        <h1 className="portfolio-title">PORTFOLIO</h1>
+
+        {/* Hero Section */}
+        <div className="hero-section">
+          <div className="hero-grid-container">
+            {/* Large Featured Photo on Left with Text */}
+            <div className="hero-main-image-wrapper">
+              <Photo
+                name="portraits/lamp"
+                alt="Portrait from the lamp series"
+                sizes="(max-width: 768px) 100vw, 960px"
+                priority
+                className="hero-main-image"
+              />
+              <div className="hero-text-overlay">
+                <div className="hero-text">
+                  <h2 className="hero-heading">Capturing Moments</h2>
+                  <p className="hero-subheading">A visual journey through human expression and urban landscapes.</p>
                 </div>
-              </motion.div>
-              
-              {/* Stacked Photos on Right */}
-              <div className="hero-right-column">
-                <motion.div 
-                  initial={{ x: 20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="hero-secondary-image-wrapper"
-                >
-                  <img 
-                    src="/assets/street/bus.jpg" 
-                    alt="Portrait photography" 
-                    className="hero-secondary-image"
-                  />
-                </motion.div>
-                
-                <motion.div 
-                  initial={{ x: 20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="hero-secondary-image-wrapper"
-                >
-                  <img 
-                    src="/assets/portraits/mop2.jpg" 
-                    alt="Street photography" 
-                    className="hero-secondary-image"
-                  />
-                </motion.div>
               </div>
             </div>
-          </motion.div>
-          
-          {/* Portrait Gallery Section */}
-          <div className="gallery-section">
-            <div className="gallery-header">
-              <h2 className="gallery-title"> PORTRAITURE</h2>
-              <button 
-                onClick={() => navigate('/photography/portraiture')}
-                className="view-all-button"
-              >
-                View all <ArrowRight className="view-all-icon" />
-              </button>
-            </div>
-            
-            <div className="gallery-container">
-              <button 
-                onClick={() => scrollGallery(portraitGalleryRef, "left")}
-                className="gallery-nav-button gallery-nav-left"
-                aria-label="Scroll left"
-              >
-                <ArrowLeft className="nav-icon" />
-              </button>
-              
-              <div 
-                ref={portraitGalleryRef}
-                className="gallery-scroller"
-              >
-                {portraitPhotos.map((photo, index) => (
-                  <motion.div
-                    key={photo.id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="gallery-item"
-                    onClick={() => navigate('/photography/portraiture')}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <img 
-                      src={photo.src || "/placeholder.svg"} 
-                      alt={photo.alt} 
-                      className="gallery-image portrait-image"
-                    />
-                  </motion.div>
-                ))}
+
+            {/* Stacked Photos on Right */}
+            <div className="hero-right-column">
+              <div className="hero-secondary-image-wrapper">
+                <Photo name="street/bus" alt="Street photograph: bus" sizes="480px" className="hero-secondary-image" />
               </div>
-              
-              <button 
-                onClick={() => scrollGallery(portraitGalleryRef, "right")}
-                className="gallery-nav-button gallery-nav-right"
-                aria-label="Scroll right"
-              >
-                <ArrowRight className="nav-icon" />
-              </button>
-              
-              <div className="mobile-indicators">
-                {Array.from({ length: Math.ceil(portraitPhotos.length / 2) }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => {
-                      if (portraitGalleryRef.current) {
-                        portraitGalleryRef.current.scrollLeft = i * portraitGalleryRef.current.offsetWidth;
-                      }
-                    }}
-                    className="indicator-dot"
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
+              <div className="hero-secondary-image-wrapper">
+                <Photo name="portraits/mop2" alt="Portrait from the mop series" sizes="480px" className="hero-secondary-image" />
               </div>
             </div>
           </div>
-          
-          {/* Street Gallery Section */}
-          <div className="gallery-section street-gallery-container">
-            <div className="gallery-header">
-              <h2 className="gallery-title">STREET</h2>
-              <button 
-                onClick={() => navigate('/photography/street')}
-                className="view-all-button"
-              >
-                View all <ArrowRight className="view-all-icon" />
-              </button>
-            </div>
-            
-            <div className="gallery-container">
-              <button 
-                onClick={() => scrollGallery(streetGalleryRef, "left")}
-                className="gallery-nav-button gallery-nav-left"
-                aria-label="Scroll left"
-              >
-                <ArrowLeft className="nav-icon" />
-              </button>
-              
-              <div 
-                ref={streetGalleryRef}
-                className="gallery-scroller"
-              >
-                {streetPhotos.map((photo, index) => (
-                  <motion.div
-                    key={photo.id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="gallery-item"
-                    onClick={() => navigate('/photography/street')}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <img 
-                      src={photo.src || "/placeholder.svg"} 
-                      alt={photo.alt} 
-                      className="gallery-image street-image"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-              
-              <button 
-                onClick={() => scrollGallery(streetGalleryRef, "right")}
-                className="gallery-nav-button gallery-nav-right"
-                aria-label="Scroll right"
-              >
-                <ArrowRight className="nav-icon" />
-              </button>
-              
-              <div className="mobile-indicators">
-                {Array.from({ length: Math.ceil(streetPhotos.length / 2) }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => {
-                      if (streetGalleryRef.current) {
-                        streetGalleryRef.current.scrollLeft = i * streetGalleryRef.current.offsetWidth;
-                      }
-                    }}
-                    className="indicator-dot"
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="category-view"
-        >
-          <motion.button
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            onClick={() => setActiveSection(null)}
-            className="back-button"
-          >
-            <ArrowLeft className="back-icon" />
-            Back to portfolio
-          </motion.button>
-          
-          <h1 className="category-title">{activeSection}</h1>
-          
-          <PhotoGrid category={activeSection} />
-        </motion.div>
-      )}
-    </main>
+        </div>
+
+        <PhotoStrip
+          title="PORTRAITURE"
+          to="/photography/portraiture"
+          photos={portraitPhotos}
+          scrollerRef={portraitGalleryRef}
+          onScroll={scrollGallery}
+        />
+        <PhotoStrip
+          title="STREET"
+          to="/photography/street"
+          photos={streetPhotos}
+          scrollerRef={streetGalleryRef}
+          onScroll={scrollGallery}
+          className="street-gallery-container"
+        />
+      </div>
+    </div>
   );
 }
 
-function PhotoGrid({ category }) {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-  const photos =
-    category === "portraiture"
-      ? portraitPhotos
-      : streetPhotos;
-
-  const getSpanClass = (index) => {
-    if (category === "portraiture") {
-      if (index === 0 || index === 3) return "portrait-large";
-    } else {
-      if (index === 1 || index === 4) return "street-wide";
-    }
-    return "";
-  };
+// A titled, horizontally scrolling row of photos linking to the full gallery.
+function PhotoStrip({ title, to, photos, scrollerRef, onScroll, className = "" }) {
+  const navigate = useNavigate();
 
   return (
-    <>
-      <div className="photo-grid">
-        {photos.map((photo, index) => (
-          <motion.div
-            key={photo.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className={`grid-item ${getSpanClass(index)}`}
-            onClick={() => setSelectedPhoto(index)}
-          >
-            <img
-              src={photo.src || "/placeholder.svg"}
-              alt={photo.alt}
-              className={`grid-image ${category === "portraiture" ? "portrait-aspect" : "street-aspect"}`}
-            />
-          </motion.div>
-        ))}
+    <div className={`gallery-section ${className}`}>
+      <div className="gallery-header">
+        <h2 className="gallery-title">{title}</h2>
+        <button onClick={() => navigate(to)} className="view-all-button">
+          View all <ArrowRight className="view-all-icon" />
+        </button>
       </div>
 
-      {selectedPhoto !== null && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="photo-modal"
-          onClick={() => setSelectedPhoto(null)}
+      <div className="gallery-container">
+        <button
+          onClick={() => onScroll(scrollerRef, "left")}
+          className="gallery-nav-button gallery-nav-left"
+          aria-label="Scroll left"
         >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", damping: 25 }}
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={photos[selectedPhoto].src || "/placeholder.svg"}
-              alt={photos[selectedPhoto].alt}
-              className="modal-image"
-            />
-            <div className="image-caption">
-              <p>{photos[selectedPhoto].description}</p>
+          <ArrowLeft className="nav-icon" />
+        </button>
+
+        <div ref={scrollerRef} className="gallery-scroller">
+          {photos.map((photo, index) => (
+            <div
+              key={photo.name}
+              className="gallery-item"
+              style={{ '--i': index }}
+              onClick={() => navigate(to)}
+            >
+              <Photo name={photo.name} alt={photo.alt} sizes={GALLERY_SIZES} className="gallery-image" />
             </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </>
+          ))}
+        </div>
+
+        <button
+          onClick={() => onScroll(scrollerRef, "right")}
+          className="gallery-nav-button gallery-nav-right"
+          aria-label="Scroll right"
+        >
+          <ArrowRight className="nav-icon" />
+        </button>
+
+        <div className="mobile-indicators">
+          {Array.from({ length: Math.ceil(photos.length / 2) }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                if (scrollerRef.current) {
+                  scrollerRef.current.scrollLeft = i * scrollerRef.current.offsetWidth;
+                }
+              }}
+              className="indicator-dot"
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

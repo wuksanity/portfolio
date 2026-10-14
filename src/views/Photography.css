@@ -1,3 +1,5 @@
+/* Every rule is scoped to this page so it cannot restyle other pages. */
+
 /* Base styles */
 .photography-portfolio {
   min-height: 100vh;
@@ -6,13 +8,13 @@
   padding: 2rem 2rem 16rem;
 }
 
-.portfolio-container {
+.photography-portfolio .portfolio-container {
   max-width: 1200px;
   margin: 0 auto;
   padding-bottom: 1rem;
 }
 
-.portfolio-title {
+.photography-portfolio .portfolio-title {
   font-size: 2rem;
   font-weight: 10;
   text-align: center;
@@ -22,50 +24,50 @@
 }
 
 /* Hero section styles */
-.hero-section {
+.photography-portfolio .hero-section {
   margin-bottom: 3rem;
 }
 
-.hero-grid-container {
+.photography-portfolio .hero-grid-container {
   display: flex;
   gap: 1rem;
   height: 70vh;
 }
 
-.hero-main-image-wrapper {
+.photography-portfolio .hero-main-image-wrapper {
   flex: 2;
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
 }
 
-.hero-main-image {
+.photography-portfolio .hero-main-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-right-column {
+.photography-portfolio .hero-right-column {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.hero-secondary-image-wrapper {
+.photography-portfolio .hero-secondary-image-wrapper {
   flex: 1;
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
 }
 
-.hero-secondary-image {
+.photography-portfolio .hero-secondary-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-text-overlay {
+.photography-portfolio .hero-text-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -75,14 +77,14 @@
   color: white;
 }
 
-.hero-heading {
+.photography-portfolio .hero-heading {
   font-size: 2.5rem;
   font-weight: 10;
   margin-bottom: -1rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.hero-subheading {
+.photography-portfolio .hero-subheading {
   font-size: 1.25rem;
   font-weight: 10;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -90,11 +92,11 @@
 }
 
 /* Gallery section styles */
-.gallery-section {
+.photography-portfolio .gallery-section {
   margin-bottom: 2rem;
 }
 
-.gallery-header {
+.photography-portfolio .gallery-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,7 +104,7 @@
   padding: 0;
 }
 
-.gallery-title {
+.photography-portfolio .gallery-title {
   font-size: 1.75rem;
   font-weight: 100;
   text-transform: uppercase;
@@ -111,7 +113,7 @@
   margin: 0.5rem;
 }
 
-.view-all-button {
+.photography-portfolio .view-all-button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -125,42 +127,39 @@
   margin: 0;
 }
 
-.view-all-button:hover {
+.photography-portfolio .view-all-button:hover {
   color: white;
 }
 
-.view-all-icon {
+.photography-portfolio .view-all-icon {
   width: 1rem;
   height: 1rem;
 }
 
-.gallery-container {
+.photography-portfolio .gallery-container {
   position: relative;
   margin-bottom: 4rem;
 }
 
-.gallery-scroller {
+.photography-portfolio .gallery-scroller {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  cursor: grab;
 }
 
-.gallery-scroller::-webkit-scrollbar {
+.photography-portfolio .gallery-scroller::-webkit-scrollbar {
   display: none;
 }
 
-.gallery-scroller.dragging {
+.photography-portfolio .gallery-scroller.dragging {
   cursor: grabbing;
   scroll-behavior: auto; /* disable smooth for real-time dragging */
 }
 
-.gallery-scroller {
-  cursor: grab;
-}
-
-.gallery-item {
+.photography-portfolio .gallery-item {
   flex: 0 0 auto;
   width: 500px;
   height: 312.5px;
@@ -171,29 +170,21 @@
   margin: 0 0.5rem;
 }
 
-.gallery-item:first-child {
+.photography-portfolio .gallery-item:first-child {
   margin-left: 0;
 }
 
-.gallery-item:last-child {
+.photography-portfolio .gallery-item:last-child {
   margin-right: 0;
 }
 
-.gallery-image {
+.photography-portfolio .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.portrait-image {
-  aspect-ratio: 4/3;
-}
-
-.street-image {
-  aspect-ratio: 4/3;
-}
-
-.gallery-nav-button {
+.photography-portfolio .gallery-nav-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -211,32 +202,31 @@
   transition: all 0.2s ease;
 }
 
-.gallery-nav-button:hover {
+.photography-portfolio .gallery-nav-button:hover {
   background-color: rgba(41, 39, 39, 0.9);
 }
 
-.gallery-nav-left {
+.photography-portfolio .gallery-nav-left {
   left: 10px;
 }
 
-.gallery-nav-right {
+.photography-portfolio .gallery-nav-right {
   right: 10px;
 }
 
-.nav-icon {
+.photography-portfolio .nav-icon {
   width: 1.25rem;
   height: 1.25rem;
 }
 
-.mobile-indicators {
-  display: flex;
+.photography-portfolio .mobile-indicators {
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
   display: none;
 }
 
-.indicator-dot {
+.photography-portfolio .indicator-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -246,131 +236,75 @@
   transition: background-color 0.2s ease;
 }
 
-.indicator-dot:hover {
+.photography-portfolio .indicator-dot:hover {
   background-color: #999;
 }
 
-/* Category view styles */
-.category-view {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
+.photography-portfolio .street-gallery-container {
+  margin-bottom: 1rem;
 }
 
-.back-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  cursor: pointer;
-  transition: color 0.2s ease;
+/* Entrance animations */
+@keyframes photography-fade-in {
+  from { opacity: 0; }
 }
 
-.back-button:hover {
-  color: #666;
+@keyframes photography-rise {
+  from { opacity: 0; transform: translateY(20px); }
 }
 
-.back-icon {
-  width: 1rem;
-  height: 1rem;
+@keyframes photography-slide-in {
+  from { opacity: 0; transform: translateX(20px); }
 }
 
-.category-title {
-  font-size: 2.5rem;
-  font-weight: 100;
-  text-transform: capitalize;
-  margin-bottom: 1.5rem;
-  text-align: center;
+@keyframes photography-brighten {
+  from { opacity: 0.8; }
 }
 
-/* Photo grid styles */
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+.photography-portfolio .portfolio-container {
+  animation: photography-fade-in 0.5s ease-out both;
 }
 
-.grid-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  cursor: pointer;
+.photography-portfolio .hero-section {
+  animation: photography-rise 0.8s ease-out both;
 }
 
-.grid-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+.photography-portfolio .hero-main-image-wrapper {
+  animation: photography-brighten 1.2s ease-out both;
 }
 
-.portrait-aspect {
-  aspect-ratio: 3/4;
+.photography-portfolio .hero-text {
+  animation: photography-rise 0.8s ease-out 0.9s both;
 }
 
-.street-aspect {
-  aspect-ratio: 4/3;
+.photography-portfolio .hero-secondary-image-wrapper {
+  animation: photography-slide-in 0.8s ease-out 0.3s both;
 }
 
-.portrait-large {
-  grid-column: span 2;
-  grid-row: span 2;
+.photography-portfolio .hero-secondary-image-wrapper + .hero-secondary-image-wrapper {
+  animation-delay: 0.6s;
 }
 
-.street-wide {
-  grid-column: span 2;
+.photography-portfolio .gallery-item {
+  animation: photography-slide-in 0.5s ease-out both;
+  animation-delay: calc(var(--i, 0) * 0.1s);
 }
 
-/* Modal styles */
-.photo-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 2rem;
-}
-
-.modal-content {
-  max-width: 90%;
-  max-height: 90%;
-  background-color: white;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.modal-image {
-  width: 100%;
-  height: auto;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-.image-caption {
-  padding: 1rem;
-  text-align: center;
-  background-color: white;
+@media (prefers-reduced-motion: reduce) {
+  .photography-portfolio,
+  .photography-portfolio * {
+    animation: none !important;
+  }
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   /* Enable smooth card snapping on horizontal scroll */
-  .gallery-scroller {
+  .photography-portfolio .gallery-scroller {
     scroll-snap-type: x mandatory;
   }
 
-  .gallery-item {
+  .photography-portfolio .gallery-item {
     flex: 0 0 80%; /* show almost full-width card */
     width: 80%;
     height: auto; /* maintain aspect-ratio via img */
@@ -378,143 +312,77 @@
     margin: 0 1rem;
   }
 
-  .gallery-image {
+  .photography-portfolio .gallery-image {
     aspect-ratio: 4/3;
   }
 
-  .hero-grid-container {
+  .photography-portfolio .hero-grid-container {
     flex-direction: column;
     height: auto;
   }
 
-  .hero-main-image-wrapper,
-  .hero-right-column {
+  .photography-portfolio .hero-main-image-wrapper,
+  .photography-portfolio .hero-right-column {
     flex: none;
     height: 50vh;
   }
 
-  .hero-right-column {
-    flex-direction: row;
-  }
-
-  .hero-text-overlay {
+  .photography-portfolio .hero-text-overlay {
     padding: 1.5rem;
   }
 
-  .hero-heading {
+  .photography-portfolio .hero-heading {
     font-size: 2rem;
   }
 
-  .hero-subheading {
+  .photography-portfolio .hero-subheading {
     font-size: 1rem;
   }
 
-  .portfolio-title {
+  .photography-portfolio .portfolio-title {
     font-size: 2rem;
   }
 
-  .mobile-indicators {
+  .photography-portfolio .mobile-indicators {
     display: flex;
   }
 
-  .gallery-nav-button {
+  .photography-portfolio .gallery-nav-button {
     display: none;
   }
 
   /* hide right column secondary images */
-  .hero-right-column {
+  .photography-portfolio .hero-right-column {
     display: none;
   }
 
   /* Ensure main image wrapper takes full height */
-  .hero-main-image-wrapper {
+  .photography-portfolio .hero-main-image-wrapper {
     height: 60vh;
   }
 }
 
 @media (max-width: 480px) {
   /* Narrower phones */
-  .gallery-item {
+  .photography-portfolio {
+    padding: 1rem;
+  }
+
+  .photography-portfolio .gallery-item {
     flex: 0 0 90%;
     width: 90%;
     margin: 0 0.5rem;
   }
 
-  .hero-main-image-wrapper {
-    height: 45vh;
-  }
-
-  .hero-secondary-image-wrapper {
-    height: 30vh;
-  }
-
-  .photography-portfolio {
-    padding: 1rem;
-  }
-
-  .hero-grid-container {
-    flex-direction: column;
-  }
-
-  .hero-main-image-wrapper {
+  .photography-portfolio .hero-main-image-wrapper {
     height: 40vh;
   }
 
-  .hero-right-column {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .hero-secondary-image-wrapper {
-    height: 25vh;
-  }
-
-  .hero-text-overlay {
+  .photography-portfolio .hero-text-overlay {
     padding: 1rem;
   }
 
-  .hero-heading {
+  .photography-portfolio .hero-heading {
     font-size: 1.8rem;
   }
-
-  .photo-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .portrait-large, .street-wide {
-    grid-column: span 1;
-  }
-
-  /* enforce hidden for extra small */
-  .hero-right-column {
-    display: none !important;
-  }
-}
-
-.street-gallery-container {
-  margin-bottom: 1rem;
-}
-
-.back-to-main {
-  position: fixed;
-  top: 1rem;
-  left: 2rem;
-  z-index: 100;
-}
-
-.back-to-main-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  color: #A1A1AA;
-  font-size: .8rem;
-  font-weight: 10;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.back-to-main-button:hover {
-  color: white;
 }

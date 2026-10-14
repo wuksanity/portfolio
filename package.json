@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "media": "node scripts/media/build.mjs",
+    "media:install": "cd scripts/media && npm install"
   },
   "dependencies": {
     "firebase": "^11.7.3",
-    "framer-motion": "^12.12.1",
     "lucide-react": "^0.511.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

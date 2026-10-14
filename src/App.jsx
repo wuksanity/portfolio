@@ -62,7 +62,8 @@ function App() {
                 ref={aboutRef}
                 title="walker riley" 
                 description="software engineer. photographer. actor. human being." 
-                backgroundImage="/assets/field.JPG" 
+                image="field"
+                priority
                 showButton={false}
                 className="first-section-content"
               />
@@ -75,6 +76,8 @@ function App() {
 
                     <p>From refining AI language models and crafting intelligent automation systems to developing full-stack applications from the ground up, I combine deep technical skill with a creative, builder's mindset.</p>
 
+                    <p>Most recently, I've been the sole engineer behind two live platforms for clients: <strong>StagewayPDX</strong>, a marketplace connecting Portland musicians with venues, and <strong>Golden Goat</strong>, an ethical streaming service for independent film. On both, I partnered directly with the client and designed, architected, built, tested, and launched the entire product myself.</p>
+
                     <p>My experience spans AI research, machine learning engineering, and real-world app development—backed by a strong foundation in Python, JavaScript, and system architecture.</p>
 
                     <p>Whether optimizing models in cloud environments or designing intuitive digital experiences, I approach every project with precision, curiosity, and a drive to make technology meaningful.</p>
@@ -83,7 +86,7 @@ function App() {
 
                   </>
                 } 
-                backgroundImage="/assets/lotus.jpg" 
+                image="lotus"
               />
               <Section 
                 ref={photographyRef}
@@ -95,7 +98,7 @@ function App() {
                     <p>Creative direction? It's not about control. It's about controlled chaos. I build concepts, then set them on fire. I coax vulnerability out of strangers, then freeze it in time. Every shoot is a tightrope walk between intention and accident.</p>
                   </>
                 }
-                backgroundImage="/assets/portraits/lamp.jpg" 
+                image="portraits/lamp"
               />
               <Section 
                 ref={actingModelingRef}
@@ -114,7 +117,7 @@ function App() {
 
                   </>
                 }
-                backgroundImage="/assets/borgar.JPG"
+                image="borgar"
               />
             </>
           } />

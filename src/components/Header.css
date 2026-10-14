@@ -152,8 +152,4 @@
   .nav-list.open {
     transform: translateX(0);
   }
-
-  .social-icons {
-    display: none;
-  }
 }

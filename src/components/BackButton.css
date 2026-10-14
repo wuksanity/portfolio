@@ -1,0 +1,33 @@
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #A1A1AA;
+  font-size: .8rem;
+  font-weight: 10;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-button--dark:hover {
+  color: white;
+}
+
+.back-button--light:hover {
+  color: #000;
+}
+
+.back-button .back-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Pinned to the top-left corner of the page. */
+.back-button-fixed {
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
+  z-index: 100;
+}
