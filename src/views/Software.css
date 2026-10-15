@@ -43,6 +43,7 @@
   align-items: center;
   transform: translateY(-50%);
   z-index: 0;
+  gap: 4vw;
   pointer-events: none; /* allow explorer window to be clickable over icons */
 }
 
@@ -391,5 +392,32 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+}
+
+/* Phones: bigger desktop folders, so they read as the way in and are easy to tap. */
+@media (max-width: 640px) {
+  .desktop-icons-row {
+    gap: 2.5rem;
+    align-items: flex-start; /* a two-line label shouldn't lift its icon out of line */
+  }
+
+  .desktop-icon-hover {
+    padding: 0.85rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  .desktop-icon-image {
+    width: 2.75rem;
+    height: 2.75rem;
+    color: #f3f4f6;
+  }
+
+  .desktop-icon-label {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
 }

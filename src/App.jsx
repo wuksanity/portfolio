@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Section from './components/Section';
@@ -7,32 +7,16 @@ import Photography from './views/Photography';
 import ActingModeling from './views/ActingModeling';
 import PortraitureView from './views/PortraitureView';
 import StreetView from './views/StreetView';
-import MobileWarningPopup from './components/MobileWarningPopup';
 import './App.css';
 
 function App() {
   const location = useLocation();
   const [showPopup, setShowPopup] = useState(false);
-  const [showMobileWarning, setShowMobileWarning] = useState(false);
 
   const aboutRef = useRef(null);
   const softwareRef = useRef(null);
   const photographyRef = useRef(null);
   const actingModelingRef = useRef(null);
-
-  // Detect mobile viewport on first load
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    const dismissed = localStorage.getItem('mobileWarningDismissed');
-    if (isMobile && !dismissed) {
-      setShowMobileWarning(true);
-    }
-  }, []);
-
-  const dismissMobileWarning = () => {
-    setShowMobileWarning(false);
-    localStorage.setItem('mobileWarningDismissed', 'true');
-  };
 
   // Scroll function
   const scrollToSection = (ref) => {
@@ -63,6 +47,7 @@ function App() {
                 title="walker riley" 
                 description="software engineer. photographer. actor. human being." 
                 image="field"
+                focus="5% 50%"
                 priority
                 showButton={false}
                 className="first-section-content"
@@ -87,6 +72,7 @@ function App() {
                   </>
                 } 
                 image="lotus"
+                focus="60% 50%"
               />
               <Section 
                 ref={photographyRef}
@@ -99,6 +85,7 @@ function App() {
                   </>
                 }
                 image="portraits/lamp"
+                focus="52% 50%"
               />
               <Section 
                 ref={actingModelingRef}
@@ -118,6 +105,7 @@ function App() {
                   </>
                 }
                 image="borgar"
+                focus="63% 50%"
               />
             </>
           } />
@@ -135,10 +123,6 @@ function App() {
         </div>
       )}
 
-      {/* Mobile-only optimisation notice */}
-      {showMobileWarning && (
-        <MobileWarningPopup onClose={dismissMobileWarning} />
-      )}
     </>
   );
 }

@@ -31,3 +31,26 @@
   left: 2rem;
   z-index: 100;
 }
+
+/* Phones: content runs under it, so it becomes a small frosted pill. */
+@media (max-width: 768px) {
+  .back-button-fixed {
+    top: 0.9rem;
+    left: 0.9rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .back-button-fixed.back-button--dark {
+    background: rgba(0, 0, 0, 0.35);
+    color: #e4e4e7;
+  }
+
+  .back-button-fixed.back-button--light {
+    background: rgba(255, 255, 255, 0.8);
+    color: #52525b;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  }
+}

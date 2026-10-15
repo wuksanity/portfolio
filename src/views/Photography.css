@@ -297,38 +297,39 @@
   }
 }
 
-/* Responsive styles */
+/* Responsive styles: phones and small tablets */
 @media (max-width: 768px) {
-  /* Enable smooth card snapping on horizontal scroll */
-  .photography-portfolio .gallery-scroller {
-    scroll-snap-type: x mandatory;
+  .photography-portfolio {
+    padding: 4.25rem 1rem 6rem;
   }
 
-  .photography-portfolio .gallery-item {
-    flex: 0 0 80%; /* show almost full-width card */
-    width: 80%;
-    height: auto; /* maintain aspect-ratio via img */
-    scroll-snap-align: center;
-    margin: 0 1rem;
+  .photography-portfolio .portfolio-title {
+    font-size: 2rem;
+    margin: 0 0 1.5rem;
   }
 
-  .photography-portfolio .gallery-image {
-    aspect-ratio: 4/3;
-  }
-
+  /* Hero: one tall photo, then the two secondary photos side by side */
   .photography-portfolio .hero-grid-container {
     flex-direction: column;
     height: auto;
+    gap: 0.75rem;
   }
 
-  .photography-portfolio .hero-main-image-wrapper,
+  .photography-portfolio .hero-main-image-wrapper {
+    flex: none;
+    height: 68vh;
+    height: 68svh;
+  }
+
   .photography-portfolio .hero-right-column {
     flex: none;
-    height: 50vh;
+    flex-direction: row;
+    gap: 0.75rem;
+    height: 56vw;
   }
 
   .photography-portfolio .hero-text-overlay {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .photography-portfolio .hero-heading {
@@ -337,10 +338,39 @@
 
   .photography-portfolio .hero-subheading {
     font-size: 1rem;
+    max-width: 100%;
   }
 
-  .photography-portfolio .portfolio-title {
-    font-size: 2rem;
+  .photography-portfolio .gallery-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  /* Strips bleed to the screen edges; the next print peeks in from the right. */
+  .photography-portfolio .gallery-scroller {
+    scroll-snap-type: x mandatory;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    scroll-padding: 0 1rem;
+    gap: 0.75rem;
+  }
+
+  .photography-portfolio .gallery-item,
+  .photography-portfolio .gallery-item:first-child,
+  .photography-portfolio .gallery-item:last-child {
+    flex: 0 0 84%;
+    width: 84%;
+    height: auto;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .photography-portfolio .gallery-image {
+    aspect-ratio: 4/3;
+  }
+
+  .photography-portfolio .gallery-container {
+    margin-bottom: 2.5rem;
   }
 
   .photography-portfolio .mobile-indicators {
@@ -349,40 +379,5 @@
 
   .photography-portfolio .gallery-nav-button {
     display: none;
-  }
-
-  /* hide right column secondary images */
-  .photography-portfolio .hero-right-column {
-    display: none;
-  }
-
-  /* Ensure main image wrapper takes full height */
-  .photography-portfolio .hero-main-image-wrapper {
-    height: 60vh;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Narrower phones */
-  .photography-portfolio {
-    padding: 1rem;
-  }
-
-  .photography-portfolio .gallery-item {
-    flex: 0 0 90%;
-    width: 90%;
-    margin: 0 0.5rem;
-  }
-
-  .photography-portfolio .hero-main-image-wrapper {
-    height: 40vh;
-  }
-
-  .photography-portfolio .hero-text-overlay {
-    padding: 1rem;
-  }
-
-  .photography-portfolio .hero-heading {
-    font-size: 1.8rem;
   }
 }

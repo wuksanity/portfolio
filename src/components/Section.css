@@ -66,14 +66,79 @@
   color: black;
 }
 
+/* Phones and small tablets: each photo fills the screen, cropped around its subject
+   (--focus), and stays pinned while the text slides up over it on a dark panel. */
 @media (max-width: 768px) {
+  .section {
+    display: block;
+    min-height: 0;
+  }
+
+  .section-background {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    object-position: var(--focus, 50% 50%);
+  }
+
+  /* Starts low, so each photo has the screen to itself first; the panel stays slightly
+     translucent, so the pinned photo still glows faintly behind the text. */
+  .section-content {
+    max-width: none;
+    margin-top: -45vh;
+    margin-top: -45svh;
+    padding: 30vh 1.75rem 5.5rem;
+    padding-top: 30svh;
+    text-align: left;
+    background: linear-gradient(
+      to bottom,
+      rgba(24, 24, 27, 0) 0,
+      rgba(24, 24, 27, 0.5) 14vh,
+      rgba(24, 24, 27, 0.86) 30vh,
+      rgba(24, 24, 27, 0.9) 100%
+    );
+  }
 
   .section-content h2 {
-    font-size: 2rem;
+    font-size: 2.75rem;
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 0 0 1.4rem;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+  }
+
+  .section-content p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.86);
   }
 
   .view-more {
-    padding: 0.4rem 1.2rem;
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.75rem;
     font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* The opening section is a full-screen cover: the name sits over the photo. */
+  .first-section-content .section-content {
+    box-sizing: border-box;
+    height: 100vh;
+    height: 100svh;
+    margin-top: -100vh;
+    margin-top: -100svh;
+    padding: 0 1.75rem 13vh;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to bottom, rgba(24, 24, 27, 0) 50%, rgba(24, 24, 27, 0.6) 82%, rgb(24, 24, 27) 100%);
+  }
+
+  .first-section-content h2 {
+    font-size: 3.25rem;
+    margin-bottom: 0.75rem;
   }
 }

@@ -321,13 +321,12 @@ export default function WindowsPortfolio() {
 
       {/* Desktop Icons: buttons, so a click, tap or Enter opens them (double-click isn't available on phones) */}
       <div className="desktop-icons-row">
-        {folderNames.map((folderName, index) => (
+        {folderNames.map((folderName) => (
           <button
             type="button"
             key={folderName}
             className="desktop-icon"
             onClick={() => openFolderHandler(folderName)}
-            style={{ marginLeft: index === 0 ? 0 : "4vw" }}
           >
             <span className="desktop-icon-hover">
               <Folder className="desktop-icon-image" />

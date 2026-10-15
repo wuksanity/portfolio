@@ -176,7 +176,7 @@ function ActingTab() {
             const shape = video.width / video.height;
             return (
               // Each clip grows in proportion to its shape, so a row's clips share one height.
-              <figure key={clip.name} className="clip" style={{ flexGrow: shape }}>
+              <figure key={clip.name} className="clip" style={{ flexGrow: shape, '--shape': shape }}>
                 <video
                   className="clip-video"
                   src={video.src}

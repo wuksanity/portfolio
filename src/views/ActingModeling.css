@@ -201,13 +201,28 @@
 }
 
 @media (max-width: 640px) {
+  /* Room for the floating back button, and less padding so photos get the screen. */
+  .acting-modeling-page .main-navigation {
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .acting-modeling-page .content-container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+
   .acting-modeling-page .clips-row {
     flex-direction: column;
     gap: 2.5rem;
   }
 
+  /* Full width, except vertical clips, which are capped so each fits on one screen. */
   .acting-modeling-page .clip {
     flex-basis: auto;
     width: 100%;
+    max-width: calc(78vh * var(--shape));
+    max-width: calc(78svh * var(--shape));
+    margin: 0 auto;
   }
 }

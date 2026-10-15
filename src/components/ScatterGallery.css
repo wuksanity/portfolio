@@ -42,19 +42,27 @@
 .scatter-stage {
   position: relative;
   overflow: hidden;
+  height: var(--stage-height);
 }
 
+/* The canvas is laid out at its design width and scaled to fit the window. */
 .scatter-canvas {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
   margin: 0 auto;
+  transform: scale(var(--scale));
   transform-origin: top left;
 }
 
 .scatter-photo {
   position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
   height: auto;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
   cursor: pointer;
@@ -67,5 +75,83 @@
 
   .scatter-header .back-button {
     pointer-events: auto;
+  }
+}
+
+/* Phones: one column of large prints (sizes and sides come from ScatterGallery.jsx). */
+@media (max-width: 640px) {
+  .scatter-header {
+    position: relative;
+    display: block;
+    width: auto;
+    padding: 4.5rem 1.25rem 2rem;
+  }
+
+  .scatter-title {
+    text-align: left;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    letter-spacing: 1px;
+  }
+
+  /* A small frosted pill that stays reachable while the column scrolls past. */
+  .scatter-header .back-button {
+    position: fixed;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: 20;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: #e4e4e7;
+  }
+
+  .scatter-stage {
+    height: auto;
+    overflow: visible;
+    padding: 0 0.875rem 5rem;
+  }
+
+  .scatter-canvas {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: none;
+  }
+
+  .scatter-photo {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    width: var(--phone-width);
+    margin-left: var(--phone-x);
+    margin-top: var(--phone-gap);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Prints rise into place as they scroll into view, where the browser supports it. */
+@supports (animation-timeline: view()) {
+  @media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+    .scatter-photo {
+      animation: scatter-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+  }
+}
+
+@keyframes scatter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
