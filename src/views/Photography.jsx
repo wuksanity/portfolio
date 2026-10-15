@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import BackButton from "../components/BackButton";
@@ -9,8 +9,8 @@ import "./Photography.css";
 const DRAG_THRESHOLD = 6;
 
 // Hook to enable click-and-drag scrolling with a mouse (touch scrolls natively).
-// Releasing a drag calls onDragRelease, so dragging a preview strip opens its gallery.
-function useDragScroll(ref, onDragRelease) {
+// A drag only scrolls; the click the browser sends on release is swallowed, so it never opens a photo.
+function useDragScroll(ref) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -46,10 +46,9 @@ function useDragScroll(ref, onDragRelease) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       el.classList.remove('dragging');
-      if (dragged) onDragRelease();
     };
 
-    // The click that follows a drag must not trigger the photo's own onClick as well
+    // Releasing a drag still produces a click; stop it before it reaches the photo's onClick
     const onClickCapture = (e) => {
       if (!dragged) return;
       dragged = false;
@@ -74,7 +73,7 @@ function useDragScroll(ref, onDragRelease) {
       el.removeEventListener('click', onClickCapture, true);
       el.removeEventListener('dragstart', onDragStart);
     };
-  }, [ref, onDragRelease]);
+  }, [ref]);
 }
 
 const portraitPhotos = [
@@ -173,8 +172,8 @@ export default function PhotographyPortfolio() {
 // A titled, horizontally scrolling row of photos linking to the full gallery.
 function PhotoStrip({ title, to, photos, scrollerRef, onScroll, className = "" }) {
   const navigate = useNavigate();
-  const openGallery = useCallback(() => navigate(to), [navigate, to]);
-  useDragScroll(scrollerRef, openGallery);
+  const openGallery = () => navigate(to);
+  useDragScroll(scrollerRef);
 
   return (
     <div className={`gallery-section ${className}`}>
