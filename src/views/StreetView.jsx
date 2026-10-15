@@ -54,6 +54,6 @@ const photos = [
 
 export default function StreetView() {
   return (
-    <ScatterGallery title="people i have yet (to meet)" video="videos/ocean" photos={photos} backTo="/photography" />
+    <ScatterGallery title="people i have yet (to know)" video="videos/ocean" photos={photos} backTo="/photography" />
   );
 }
