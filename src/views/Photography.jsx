@@ -102,8 +102,8 @@ export default function PhotographyPortfolio() {
             {/* Large Featured Photo on Left with Text */}
             <div className="hero-main-image-wrapper">
               <Photo
-                name="portraits/lamp"
-                alt="Portrait from the lamp series"
+                name="portraits/mop1"
+                alt="Portrait from the mop series"
                 sizes="(max-width: 768px) 100vw, 960px"
                 priority
                 className="hero-main-image"
@@ -122,7 +122,7 @@ export default function PhotographyPortfolio() {
                 <Photo name="street/trafficman" alt="Street photograph: bus" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
               </div>
               <div className="hero-secondary-image-wrapper">
-                <Photo name="portraits/rah3" alt="Portrait from the mop series" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
+                <Photo name="portraits/loon3" alt="Portrait from the mop series" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
               </div>
             </div>
           </div>
