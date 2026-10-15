@@ -119,10 +119,10 @@ export default function PhotographyPortfolio() {
             {/* Stacked Photos on Right */}
             <div className="hero-right-column">
               <div className="hero-secondary-image-wrapper">
-                <Photo name="street/bus" alt="Street photograph: bus" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
+                <Photo name="street/trafficman" alt="Street photograph: bus" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
               </div>
               <div className="hero-secondary-image-wrapper">
-                <Photo name="portraits/mop2" alt="Portrait from the mop series" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
+                <Photo name="portraits/rah3" alt="Portrait from the mop series" sizes="(max-width: 768px) 48vw, 480px" className="hero-secondary-image" />
               </div>
             </div>
           </div>
