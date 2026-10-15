@@ -1,5 +1,23 @@
 {
   "images": {
+    "about": {
+      "width": 2400,
+      "height": 1600,
+      "sources": [
+        {
+          "src": "/media/about-960.a6793ed5.webp",
+          "width": 960
+        },
+        {
+          "src": "/media/about-1600.f636fb0f.webp",
+          "width": 1600
+        },
+        {
+          "src": "/media/about-2400.4278530e.webp",
+          "width": 2400
+        }
+      ]
+    },
     "borgar": {
       "width": 2400,
       "height": 1800,
@@ -32,24 +50,6 @@
         },
         {
           "src": "/media/bridge-2400.3f8af3b8.webp",
-          "width": 2400
-        }
-      ]
-    },
-    "field": {
-      "width": 2400,
-      "height": 1600,
-      "sources": [
-        {
-          "src": "/media/field-960.4f25c464.webp",
-          "width": 960
-        },
-        {
-          "src": "/media/field-1600.7f601f81.webp",
-          "width": 1600
-        },
-        {
-          "src": "/media/field-2400.76034158.webp",
           "width": 2400
         }
       ]
@@ -372,6 +372,24 @@
         }
       ]
     },
+    "portraits/abandoned1": {
+      "width": 1800,
+      "height": 1011,
+      "sources": [
+        {
+          "src": "/media/portraits/abandoned1-640.5b7c33dc.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/abandoned1-1200.794fa2c6.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/abandoned1-1800.3f5547ee.webp",
+          "width": 1800
+        }
+      ]
+    },
     "portraits/bag1": {
       "width": 1800,
       "height": 1256,
@@ -516,6 +534,60 @@
         }
       ]
     },
+    "portraits/drag1": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/drag1-640.8f03f3e2.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/drag1-1200.f279fef3.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/drag1-1800.d435ec1e.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/duck1": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/duck1-640.a8deeb95.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/duck1-1200.6de7e983.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/duck1-1800.01872cac.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/duck2": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/duck2-640.2ead29bb.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/duck2-1200.d0a44caa.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/duck2-1800.a131e181.webp",
+          "width": 1800
+        }
+      ]
+    },
     "portraits/fence1": {
       "width": 1800,
       "height": 1200,
@@ -656,6 +728,42 @@
         },
         {
           "src": "/media/portraits/gym2-1800.59eb51ce.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/hole1": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/hole1-640.c8b948ec.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/hole1-1200.7dcdb16b.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/hole1-1800.d1361d8f.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/hole2": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/hole2-640.77bff9e5.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/hole2-1200.62d99f80.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/hole2-1800.061dcd02.webp",
           "width": 1800
         }
       ]
@@ -912,6 +1020,78 @@
         }
       ]
     },
+    "portraits/rope1": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/rope1-640.094c1236.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/rope1-1200.1b0dddf2.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/rope1-1800.2bfc7cfb.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/rope2": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/rope2-640.1d35d97c.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/rope2-1200.ce9dc03a.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/rope2-1800.ef8b12cf.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/rope3": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/rope3-640.dba03369.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/rope3-1200.a4258cc2.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/rope3-1800.0becfa17.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "portraits/rope4": {
+      "width": 1800,
+      "height": 1200,
+      "sources": [
+        {
+          "src": "/media/portraits/rope4-640.86fe4385.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/portraits/rope4-1200.e609c2e2.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/portraits/rope4-1800.7b5f7fbc.webp",
+          "width": 1800
+        }
+      ]
+    },
     "portraits/rus1": {
       "width": 1800,
       "height": 1200,
@@ -1053,6 +1233,24 @@
         {
           "src": "/media/portraits/stop3-1800.c82c409a.webp",
           "width": 1800
+        }
+      ]
+    },
+    "stairs": {
+      "width": 2400,
+      "height": 1600,
+      "sources": [
+        {
+          "src": "/media/stairs-960.974d316c.webp",
+          "width": 960
+        },
+        {
+          "src": "/media/stairs-1600.ec208821.webp",
+          "width": 1600
+        },
+        {
+          "src": "/media/stairs-2400.21108e99.webp",
+          "width": 2400
         }
       ]
     },
@@ -1214,6 +1412,24 @@
         },
         {
           "src": "/media/street/cops-1800.5985b6ac.webp",
+          "width": 1800
+        }
+      ]
+    },
+    "street/couplesunset": {
+      "width": 1800,
+      "height": 1011,
+      "sources": [
+        {
+          "src": "/media/street/couplesunset-640.ea5fd78c.webp",
+          "width": 640
+        },
+        {
+          "src": "/media/street/couplesunset-1200.dab97d53.webp",
+          "width": 1200
+        },
+        {
+          "src": "/media/street/couplesunset-1800.095e3504.webp",
           "width": 1800
         }
       ]

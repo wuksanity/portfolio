@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Folder, FileText, ArrowLeft, ArrowRight, Home, X, Minus, Square, Search, Settings, Power, ExternalLink } from "lucide-react"
+import { Folder, FileText, ArrowLeft, ArrowRight, Home, X, Minus, Square, Search, Settings, Power, ExternalLink, Download } from "lucide-react"
 import Photo from "../components/Photo"
 import "./Software.css"
 
@@ -251,14 +251,19 @@ function TaskbarClock() {
   )
 }
 
+// The resume, as a file on the desktop (public/walker-riley-resume.pdf)
+const RESUME = { name: "Resume.pdf", src: "/walker-riley-resume.pdf", download: "Walker-Riley-Resume.pdf" }
+
 export default function WindowsPortfolio() {
   const navigate = useNavigate()
+  const [resumeOpen, setResumeOpen] = useState(false)
   const [openFolder, setOpenFolder] = useState(null)
   const [currentPath, setCurrentPath] = useState([])
   const [currentItems, setCurrentItems] = useState([])
   const [selectedFile, setSelectedFile] = useState(null)
 
   const openFolderHandler = (folderName) => {
+    setResumeOpen(false)
     setOpenFolder(folderName)
     setCurrentPath([folderName])
     setCurrentItems(portfolioData[folderName] || [])
@@ -312,6 +317,16 @@ export default function WindowsPortfolio() {
     setSelectedFile(null)
   }
 
+  // Phones show PDFs best in their own viewer; elsewhere it opens in a desktop window.
+  const openResume = () => {
+    if (window.matchMedia("(max-width: 640px)").matches) {
+      window.open(RESUME.src, "_blank", "noopener")
+      return
+    }
+    closeExplorer()
+    setResumeOpen(true)
+  }
+
   const folderNames = Object.keys(portfolioData)
 
   return (
@@ -336,7 +351,48 @@ export default function WindowsPortfolio() {
             </span>
           </button>
         ))}
+        <button type="button" className="desktop-icon" onClick={openResume}>
+          <span className="desktop-icon-hover">
+            <FileText className="desktop-icon-image" />
+          </span>
+          <span className="desktop-icon-label">{RESUME.name}</span>
+        </button>
       </div>
+
+      {/* Resume Window */}
+      {resumeOpen && (
+        <div className="explorer-window document-window" role="dialog" aria-label="Resume">
+          <div className="explorer-title-bar">
+            <div className="title-bar-content">
+              <FileText className="title-bar-icon" />
+              <span>{RESUME.name}</span>
+            </div>
+            <div className="window-controls">
+              <button className="window-button" onClick={() => setResumeOpen(false)} aria-label="Minimize">
+                <Minus className="window-icon" />
+              </button>
+              <button className="window-button" tabIndex={-1} aria-hidden="true">
+                <Square className="window-icon" />
+              </button>
+              <button className="window-button" onClick={() => setResumeOpen(false)} aria-label="Close">
+                <X className="window-icon" />
+              </button>
+            </div>
+          </div>
+          <div className="explorer-nav-bar document-toolbar">
+            <div className="path-display">Walker Riley — Resume</div>
+            <a className="file-link" href={RESUME.src} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="file-link-icon" />
+              Open
+            </a>
+            <a className="file-link" href={RESUME.src} download={RESUME.download}>
+              <Download className="file-link-icon" />
+              Download
+            </a>
+          </div>
+          <iframe className="document-frame" src={`${RESUME.src}#view=FitH`} title="Walker Riley's resume" />
+        </div>
+      )}
 
       {/* File Explorer Window */}
       {openFolder && (

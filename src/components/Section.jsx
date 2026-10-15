@@ -8,12 +8,13 @@ const Section = React.forwardRef(({
   description,
   image, // key in the media manifest, drawn full-bleed behind the content
   priority = false, // true for the first section: its image is the first thing anyone sees
-  focus, // where the subject is ("x% y%"), so a phone's narrow crop keeps it in frame
+  focus, // where the subject is ("x% y%"), so however the screen crops the photo, it stays in frame
   showButton = true,
+  to, // where "view more" goes; defaults to the title as a path ("photography" -> /photography)
   className = '',
   id
 }, ref) => {
-  const linkPath = title.toLowerCase().replace(/\s+/g, '-'); // Convert title to path
+  const linkPath = to ?? `/${title.toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
     <section
@@ -26,7 +27,7 @@ const Section = React.forwardRef(({
       <div className="section-content">
         <h2>{title}</h2>
         <div>{description}</div> {/* Changed from <p> to <div> to handle multiple paragraphs */}
-        {showButton && <Link to={`/${linkPath}`} className="view-more">view more</Link>}
+        {showButton && <Link to={linkPath} className="view-more">view more</Link>}
       </div>
     </section>
   );

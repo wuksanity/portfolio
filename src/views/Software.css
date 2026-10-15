@@ -421,3 +421,17 @@
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
 }
+
+/* Resume window: the PDF fills the space under a small toolbar. */
+.document-toolbar .file-link {
+  padding: 0.25rem 0.75rem;
+  white-space: nowrap;
+}
+
+.document-frame {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border: 0;
+  background-color: #525659; /* the browser PDF viewer's own grey, so loading doesn't flash */
+}

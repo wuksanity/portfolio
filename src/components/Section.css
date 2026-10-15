@@ -8,13 +8,15 @@
   position: relative;
 }
 
-/* An <img> rather than a CSS background, so it can be responsive and lazy-loaded. */
+/* An <img> rather than a CSS background, so it can be responsive and lazy-loaded.
+   --focus says where the subject is, so whichever edges the screen crops, it stays in frame. */
 .section-background {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--focus, 50% 50%);
   z-index: 0;
 }
 
@@ -24,6 +26,38 @@
   padding: 2rem;
   text-align: center;
   z-index: 2;
+}
+
+/* A soft, feathered shade in the page's own dark tone, only behind the text, so white copy
+   stays legible over bright photos without dimming the rest of the picture.
+   (Phones use the text panel below instead.) */
+@media (min-width: 769px) {
+  .section-content {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .section-content::before {
+    content: '';
+    position: absolute;
+    inset: -14% -12%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      closest-side,
+      rgba(24, 24, 27, 0.62),
+      rgba(24, 24, 27, 0.42) 55%,
+      rgba(24, 24, 27, 0)
+    );
+  }
+
+  /* Not on the opening cover: its short title reads fine, and the shade there distracts. */
+  .first-section-content .section-content {
+    text-shadow: none;
+  }
+
+  .first-section-content .section-content::before {
+    content: none;
+  }
 }
 
 /* First section specific styles */
@@ -79,7 +113,6 @@
     top: 0;
     height: 100vh;
     height: 100svh;
-    object-position: var(--focus, 50% 50%);
   }
 
   /* Starts low, so each photo has the screen to itself first; the panel stays slightly

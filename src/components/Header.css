@@ -93,6 +93,22 @@
   transition: color 0.3s ease; /* Optional: smooth transition for hover effects */
 }
 
+/* A faint fade at the top of the screen keeps the white links readable over bright photos.
+   (Phones get the same fade on the header itself, below.) */
+@media (min-width: 769px) {
+  .header::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 110px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(24, 24, 27, 0.5), rgba(24, 24, 27, 0));
+  }
+}
+
 /* Hamburger button (hidden on desktop) */
 .hamburger {
   display: none;

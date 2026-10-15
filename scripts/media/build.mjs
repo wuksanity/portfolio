@@ -26,7 +26,7 @@ const MANIFEST = join(ROOT, 'src', 'media', 'manifest.json')
 const CACHE = join(ROOT, 'scripts', 'media', '.cache.json')
 
 // Full-bleed page backgrounds and heroes get wider variants than gallery photos.
-const BACKGROUNDS = new Set(['field', 'lotus', 'borgar', 'bridge', 'portraits/lamp'])
+const BACKGROUNDS = new Set(['about', 'lotus', 'borgar', 'stairs', 'bridge', 'portraits/lamp'])
 const BACKGROUND_WIDTHS = [960, 1600, 2400]
 const PHOTO_WIDTHS = [640, 1200, 1800]
 const WEBP = { quality: 85, effort: 6, smartSubsample: true }
@@ -75,7 +75,7 @@ const VIDEOS = {
 const DEFAULT_VIDEO = [...H264, '-crf', '26', '-vf', "scale='min(1920,iw)':-2", '-c:a', 'aac', '-b:a', '128k']
 
 // Link-preview image for LinkedIn, iMessage, etc. Crawlers want a stable URL and a JPEG.
-const SOCIAL = { key: 'field', file: join(ROOT, 'public', 'og-image.jpg'), width: 1200, height: 630 }
+const SOCIAL = { key: 'about', file: join(ROOT, 'public', 'og-image.jpg'), width: 1200, height: 630 }
 
 const IMAGE_TYPES = new Set(['.jpg', '.jpeg', '.png'])
 const VIDEO_TYPES = new Set(['.mp4', '.mov'])
@@ -88,6 +88,8 @@ async function main() {
   const stats = { built: 0, reused: 0 }
 
   for (const file of await walk(ORIGINALS)) {
+    // Folders starting with "_" (e.g. _retired/) hold originals that are kept but not published.
+    if (relative(ORIGINALS, file).split(/[/\\]/).some((part) => part.startsWith('_'))) continue
     const ext = extname(file).toLowerCase()
     if (!IMAGE_TYPES.has(ext) && !VIDEO_TYPES.has(ext)) {
       console.warn(`skipped ${relative(ROOT, file)}: not an image or video`)

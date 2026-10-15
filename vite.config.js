@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 // Full-bleed images that are the first thing painted on these routes.
 // They must match the <Photo sizes="100vw"> that renders them.
-const FIRST_IMAGE_BY_ROUTE = { '/': 'field', '/software': 'bridge' }
+const FIRST_IMAGE_BY_ROUTE = { '/': 'about', '/software': 'bridge' }
 
 // The page is rendered by JavaScript, so the browser can't see the first image
 // until the bundle has downloaded and run. This inline script starts fetching
